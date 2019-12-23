@@ -1,0 +1,112 @@
+
+.fr__btn{
+    background-color: #2B4D10;
+}
+
+.category_pad{
+    padding: 25px;
+}
+
+.slider__inner h2{
+    color: #fff;
+    line-height: 2rem;
+}
+
+.slider__inner p{
+    margin: 5px auto;
+    font-size: 1.5rem;
+    color: maroon;
+    line-height: 2rem;
+}
+
+.slider__inner ul{
+    margin: 15px 0;
+}
+
+.slider__inner ul li{
+    margin-left: 55px;
+    font-size: 1rem;
+    color: lightgrey;
+    line-height: 1.2rem;
+    list-style: circle;
+}
+
+.cat_bg{
+    background: #000;
+    padding: 10px;
+}
+
+.category__header{
+    background: maroon;
+    padding: 15px;
+}
+.category__header h2{
+    text-align: center;
+    color: #fffefe;
+}
+
+
+.htc__category__area{
+    background: #1e1e24;
+    padding-bottom: 50px;
+}
+
+.title_review{
+    margin-top: 25px;
+    padding: 20px;
+}
+
+.htc__good__sale{
+    padding: 30px;
+}
+
+.recom__price{
+    font-size: 1.8rem;
+    font-style: normal;
+    color: #fffefe;
+}
+
+.htc__blog__area{
+    background: #1e1e18;
+}
+
+.support__showcase{
+    padding-top: 100px;
+}
+
+.supp_subhead{
+    color: #ffffff;
+    padding: 5px 0;
+}
+
+.left_heading{
+    margin-left: 25px;
+    text-decoration: underline;
+}
+
+.sup_con{
+    padding-bottom: 25px;
+}
+
+.support__icon{
+    font-size: 6.5rem;
+    text-align: center;
+    color: darkred;
+}
+
+.sup_feature_heading{
+    font-size: 1.35rem;
+    font-style: normal;
+    color: #1e1f24;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.sup_content{
+    text-align: left;
+}
+
+.support_phone, .support_mail a{
+    font-size: 1.2rem;
+    color: maroon;
+}
