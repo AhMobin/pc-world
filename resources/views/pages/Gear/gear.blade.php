@@ -74,7 +74,7 @@
                                 <ul class="product__action">
 {{--                                    <li><a href="{{ URL::to('add/wishlist/'.$pr->id) }}" title="Add to Wishlist"><i class="icon-heart icons"></i></a></li>--}}
                                     <li><button class="addwishlist" title="Add to Wishlist" data-id="{{ $pr->id }}"><i class="icon-heart icons i_wish"></i></button></li>
-                                    <li><a href="#" title="View Product"><i class="icon-eye icons"></i></a></li>
+                                    <li><a href="{{ url('product/details/'.$pr->product_slug) }}" title="View Product"><i class="icon-eye icons"></i></a></li>
                                 </ul>
                             </div>
                             <div class="fr__product__inner">

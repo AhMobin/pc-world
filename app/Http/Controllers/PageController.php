@@ -36,6 +36,10 @@ class PageController extends Controller
         return view('pages.desktop.gaming_desktop');
     }
 
+    public function BuildDesktop(){
+        return view('pages.desktop.custom_desktop');
+    }
+
     public function Workstation(){
         return view('pages.desktop.workstation');
     }
@@ -47,4 +51,5 @@ class PageController extends Controller
     public function NormalLaptop(){
         return view('pages.laptop.normal_laptop');
     }
+
 }

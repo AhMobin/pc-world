@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use DB;
 use Cart;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -37,6 +39,7 @@ class ProductController extends Controller
             $data['qty'] = $request->qty;
             $data['price'] = $product->selling_prize;
             $data['weight'] = 1;
+            $data['options']['code'] = $product->product_code;
             $data['options']['image'] = $product->product_image_one;
             $data['options']['color'] = $request->product_color;
             $data['options']['size'] = $request->product_size;
@@ -54,6 +57,7 @@ class ProductController extends Controller
             $data['qty'] = $request->qty;
             $data['price'] = $product->discount_prize;
             $data['weight'] = 1;
+            $data['options']['code'] = $product->product_code;
             $data['options']['image'] = $product->product_image_one;
             $data['options']['color'] = $request->product_color;
             $data['options']['size'] = $request->product_size;
@@ -67,6 +71,34 @@ class ProductController extends Controller
         }
     }
 
+//    public function updateCart(Request $request){
+//        $rowId =$request->productid;
+//        $qty=$request->qty;
+//        Cart::update($rowId, $qty);
+//        return redirect()->back();
+//    }
+
+
+    public function CustomBuildCart(Request $request, $id){
+        $product = DB::table('products')->where('id', $id)->first();
+
+        $data = array();
+        $data['id'] = $id;
+        $data['name'] = $product->product_name;
+        $data['qty'] = 1;
+        $data['price'] = $product->selling_prize;
+        $data['weight'] = 1;
+        $data['options']['image'] = $product->product_image_one;
+
+        Cart::add($data);
+
+        $notification = array(
+            'messege' => 'Successfully Added To Cart.',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('build.desktop')->with($notification);
+
+    }
 
     public function ViewCart(){
         $cart = Cart::content();
@@ -78,12 +110,41 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function UpdateCart(Request $request)
-    {
-        $rowId =$request->productid;
-        $qty=$request->qty;
-        Cart::update($rowId, $qty);
-        return redirect()->back();
+
+    public function uploadDesign(Request $request){
+        if(Auth::check()){
+            $validatedData = $request->validate([
+                'user_design_pattern' => 'required',
+            ]);
+
+            $data = array();
+            $data['user_id'] = Auth::id();
+            $design = $request->file('user_design_pattern');
+            if($design) {
+                $userid = Auth::id();
+                $design_name = 'user-'.$userid.'-'.hexdec(uniqid(6));
+                $ext = strtolower($design->getClientOriginalExtension());
+                $design_fullName = $design_name . '.' . $ext;
+                $uploadPath = 'public/backend/media/usersdesign/';
+                $imageURL = $uploadPath . $design_fullName;
+                $success = $design->move($uploadPath, $design_fullName);
+                $data['user_design_pattern'] = $imageURL;
+                $udesign = DB::table('userdesigns')->insert($data);
+
+                $notification = array(
+                    'messege' => 'Custom Design Uploaded',
+                    'alert-type' => 'success'
+                );
+                return Redirect()->back()->with($notification);
+            }
+
+        }else{
+            $notification = array(
+                'messege' => 'At First Login Your Account',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
     }
 
 }

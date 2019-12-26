@@ -28,4 +28,22 @@ class WishlistController extends Controller
             return \Response::json(['error' => 'At First Login Your Account']);
         }
     }
+
+    public function ViewWishlist(){
+        $view = DB::table('wishlists')->join('products','wishlists.product_id','products.id')
+            ->select('wishlists.*','products.*')
+            ->where('user_id',Auth::id())->get();
+        return view('pages.wishlist',compact('view'));
+    }
+
+    public function removeWishlist($id){
+        DB::table('wishlists')->where('product_id',$id)->where('user_id',Auth::id())->delete();
+
+        $notification = array(
+            'messege' => 'Product Deleted From Wishlist',
+            'alert-type' => 'warning'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
 }

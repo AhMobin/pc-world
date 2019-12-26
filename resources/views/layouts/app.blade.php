@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -99,8 +100,8 @@
                                     <li class="drop"><a href="#">{{'Desktop'}}</a>
                                         <ul class="dropdown">
 {{--                                            <li><a href="{{ route('gaming.desktop') }}">{{'Gaming Desktop'}}</a></li>--}}
+                                            <li><a href="{{ route('build.desktop') }}">{{'Custom Build'}}</a></li>
                                             <li><a href="{{ route('workstation.desktop') }}">{{'Workstation Desktop'}}</a></li>
-                                            <li><a href="#">{{'Custom Build'}}</a></li>
                                         </ul>
                                     </li>
                                     <li class="drop"><a href="#">{{'Laptop'}}</a>
@@ -126,9 +127,9 @@
                                         <li class="drop"><a href="{{URL::to('/')}}">{{'Home'}}</a></li>
                                         <li><a href="#">{{'Desktop'}}</a>
                                             <ul>
-                                                <li><a href="#">{{'Gaming Desktop'}}</a></li>
+{{--                                                <li><a href="#">{{'Gaming Desktop'}}</a></li>--}}
+                                                <li><a href="{{ route('build.desktop') }}">{{'Custom Build'}}</a></li>
                                                 <li><a href="#">{{'Workstation Desktop'}}</a></li>
-                                                <li><a href="#">{{'Custom Build'}}</a></li>
                                             </ul>
                                         </li>
 
@@ -175,14 +176,14 @@
                                         $wishlist = DB::table('wishlists')->where('user_id',Auth::id())->get();
                                     @endphp
                                     <div class="htc__shopping__cart wishborder">
-                                        <a class="" href="#"><i class="icon-heart icons"></i></a>
-                                        <a href="#"><span class="htc__qua">{{ count($wishlist) }}</span></a>
+                                        <a class="" href="{{ route('view.wishlist') }}"><i class="icon-heart icons"></i></a>
+                                        <a href="{{ route('view.wishlist') }}"><span class="htc__qua">{{ count($wishlist) }}</span></a>
                                     </div>
                                 @endguest
 
                                 <div class="htc__shopping__cart">
-                                    <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                    <a href="#"><span class="htc__qua">{{Cart::count()}}</span></a>
+                                    <a class="cart__menu"><i class="icon-handbag icons"></i></a>
+                                    <a class="cart__menu" href="#"><span class="htc__qua">{{Cart::count()}}</span></a>
                                 </div>
 
                             </div>
@@ -221,30 +222,32 @@
 
         <!-- Start Cart Panel (right cart panel)-->
 
-
+        @php
+            $cont = Cart::content();
+        @endphp
         <div class="shopping__cart">
             <div class="shopping__cart__inner">
                 <div class="offsetmenu__close__btn">
                     <a href="#"><i class="zmdi zmdi-close"></i></a>
                 </div>
-{{--                <div class="shp__cart__wrap">--}}
-{{--                    @foreach($view as $row)--}}
-{{--                    <div class="shp__single__product">--}}
-{{--                        <div class="shp__pro__thumb">--}}
-{{--                            <a href="#">--}}
-{{--                                <img src="{{asset('public/frontend/images/product-2/sm-smg/1.jpg')}}" alt="product images">--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="shp__pro__details">--}}
-{{--                            <h2><a href="#">Name</a></h2>--}}
-{{--                            <span class="quantity">QTY: 1</span>--}}
-{{--                            <span class="shp__price">$105.00</span>--}}
-{{--                        </div>--}}
-{{--                        <div class="remove__btn">--}}
-{{--                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    @endforeach--}}
+                <div class="shp__cart__wrap">
+                    @foreach($cont as $row)
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="{{asset($row->options->image)}}" alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2 id="pname"></h2>
+                            <span class="quantity">QTY: {{ $row->qty }}</span>
+                            <span class="shp__price">${{ $row->price }}</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="{{ url('remove/cart/'.$row->rowId)}}" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                    </div>
+                    @endforeach
 
 {{--                    <div class="shp__single__product">--}}
 {{--                        <div class="shp__pro__thumb">--}}
@@ -261,14 +264,14 @@
 {{--                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
-{{--                </div>--}}
+                </div>
                 <ul class="shoping__total">
                     <li class="subtotal">Subtotal:</li>
                     <li class="total__price">$ {{ Cart::subtotal() }}</li>
                 </ul>
                 <ul class="shopping__btn">
                     <li><a href="{{ url('view/cart/') }}">View Cart</a></li>
-                    <li class="shp__checkout"><a href="#">Checkout</a></li>
+                    <li class="shp__checkout"><a href="{{ route('checkout.product') }}">Checkout</a></li>
                 </ul>
             </div>
         </div>
@@ -414,10 +417,11 @@
 <script src="{{ asset('public/frontend/js/main.js')}}"></script>
 
 
-
 <!-- For toastr sweet alert message -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+
 
 <script>
         @if(Session::has('messege'))

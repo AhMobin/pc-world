@@ -6,11 +6,11 @@
 
         <div class="sl-pagebody">
             <div class="sl-page-title">
-                <h5>Category Table</h5>
+                <h5>Product Table</h5>
             </div><!-- sl-page-title -->
 
             <div class="card pd-20 pd-sm-40">
-                <h6 class="card-body-title mb-3">Category List
+                <h6 class="card-body-title mb-3">Product List
                     <a href="{{ route('add.product') }}" class="btn btn-sm btn-warning my-2" style="float: right">Add New</a>
                 </h6>
 

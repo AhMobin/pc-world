@@ -86,6 +86,7 @@ Route::get('support/','PageController@SupportPage')->name('support');
 Route::get('contact/us','PageController@ContactPage')->name('contact');
 Route::get('about/us','PageController@AboutPage')->name('about');
 Route::get('user/profile','PageController@UserProfilePage')->name('user.account');
+Route::get('configure/custom/desktop','PageController@BuildDesktop')->name('build.desktop');
 
 
 Route::get('gears/accessories','PageController@GearPage')->name('gears');
@@ -95,23 +96,52 @@ Route::get('gaming/laptop','PageController@GamingLaptop')->name('gaming.laptop')
 Route::get('normal/laptop','PageController@NormalLaptop')->name('normal.laptop');
 
 
-
 //wishlist
+//add
 Route::get('add/wishlist/{id}','WishlistController@AddWishlist');
+//view
+Route::get('view/wishlist','WishlistController@ViewWishlist')->name('view.wishlist');
+//remove
+Route::get('remove/wishlist/{id}','WishlistController@removeWishlist');
+
 
 //cart
 Route::get('add/to/cart/{id}','CartController@AddtoCart');
+
+Route::get('added/into/cart/{id}','CartController@AddIntoCart');
+
+
 //check cart content
 Route::get('cart/content/','CartController@checkCartContent');
 //view cart
 Route::get('view/cart/','ProductController@ViewCart');
+
+//update cart
+Route::post('update/cart','CartController@updateCart')->name('update.cart');
+
 //remove a cart
 Route::get('remove/cart/{rowId}','ProductController@removeProduct');
 
+//checkout
+Route::get('checkout','CheckoutController@Checkout')->name('checkout.product');
 
 //product
 Route::get('product/details/{product_slug}','ProductController@ProductView');
 Route::post('product/buy/{id}','ProductController@productAddedCart');
-
+//custom build product cart
+Route::post('custom/product/cart/{id}','ProductController@CustomBuildCart');
 //newsletters
 Route::post('users/subscribe','FrontController@StoreNewsletter')->name('store.newsletter');
+
+//custom desktop configure
+Route::post('upload/design','ProductController@uploadDesign');
+
+/// payment page
+Route::get('order/process','CheckoutController@PaymentPage')->name('order.process');
+
+///customer order payment
+Route::post('payment/process','PaymentController@PaymentProcess')->name('payment.process');
+
+//bkash payment
+Route::post('paying/bkash','PaymentController@bKashPayment')->name('paying.bkash');
+

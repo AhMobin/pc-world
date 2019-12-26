@@ -23,7 +23,7 @@ class BrandController extends Controller
     public function storeBrand(Request $request){
         $validatedData = $request->validate([
             'brand_name' => 'required|unique:brands|max:55',
-            'brand_logo' => 'required|max:70',
+            'brand_logo' => 'required',
         ]);
 
         $data = array();
