@@ -91,6 +91,7 @@ class CartController extends Controller
         $qty=$request->qty;
         Cart::update($rowId, $qty);
         return redirect()->back();
+
     }
 
     public function checkCartContent(){

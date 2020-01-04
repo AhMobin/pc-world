@@ -104,6 +104,10 @@
                                 <form action="{{ route('paying.bkash') }}" method="post">
                                     @csrf
                                     <div class="form-group">
+                                        <label for="customerEmail">Our BKash Mercedes Number</label>
+                                        <input type="text" class="form-control" name="mercedes_number" value="0123456789" readonly disabled>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="customerEmail">BKash Transection ID</label>
                                         <input type="text" class="form-control" name="tranx_id" placeholder="Payment Transection Number" required>
                                     </div>
@@ -112,9 +116,10 @@
                                         <input type="text" class="form-control" name="paying_amount" placeholder="Total Paying Amount" required>
                                     </div>
 
+                                    <input type="hidden" class="form-control" name="subtotal_amount" value="{{ Cart::subtotal() }}">
                                     <input type="hidden" class="form-control" name="shipping_charge" value="5">
                                     <input type="hidden" class="form-control" name="tax" value="{{ Cart::tax() }}">
-                                    <input type="hidden" class="form-control" name="total_amount" value="{{ round((Cart::total()+5)*85) }}">
+                                    <input type="hidden" class="form-control" name="total_amount" value="{{ round((Cart::total()+5)) }}">
                                     <input type="hidden" class="form-control" name="ship_name" value="{{ $data['name'] }}">
                                     <input type="hidden" class="form-control" name="ship_phone" value="{{ $data['phone_number'] }}">
                                     <input type="hidden" class="form-control" name="ship_email" value="{{ $data['email_address'] }}">

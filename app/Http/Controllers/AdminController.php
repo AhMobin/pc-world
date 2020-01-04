@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Admin;
+use DB;
 class AdminController extends Controller
 {
         /**
@@ -44,19 +45,19 @@ class AdminController extends Controller
                       $user=Admin::find(Auth::id());
                       $user->password=Hash::make($request->password);
                       $user->save();
-                      Auth::logout();  
+                      Auth::logout();
                       $notification=array(
                         'messege'=>'Password Changed Successfully ! Now Login with Your New Password',
                         'alert-type'=>'success'
                          );
-                       return Redirect()->route('admin.login')->with($notification); 
+                       return Redirect()->route('admin.login')->with($notification);
                  }else{
                      $notification=array(
                         'messege'=>'New password and Confirm Password not matched!',
                         'alert-type'=>'error'
                          );
                        return Redirect()->back()->with($notification);
-                 }     
+                 }
       }else{
         $notification=array(
                 'messege'=>'Old Password not matched!',
@@ -65,6 +66,63 @@ class AdminController extends Controller
                return Redirect()->back()->with($notification);
       }
     }
+
+
+    public function AdminProfile(){
+        $adminID = Auth::id();
+        $admin = DB::table('admins')->where('id',$adminID)->first();
+        return view('admin.admin_profile',compact('admin'));
+    }
+
+    public function EditAdminProfile($id){
+        $admin = DB::table('admins')->where('id',$id)->first();
+        return view('admin.edit_profile',compact('admin'));
+    }
+
+    public function UpdateAdminProfile(Request $request, $id){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $data = array();
+        $data['name'] = $request->name;
+        $data['phone'] = $request->phone;
+        $data['email'] = $request->email;
+
+        $oldphoto = $request->old_photo;
+
+        $image = $request->file('admin_photo');
+
+        if($image) {
+            unlink($oldphoto);
+            $image_name = hexdec(uniqid());
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_fullName = $image_name . '.' . $ext;
+            $uploadPath = 'public/backend/media/admin/profile/';
+            $imageURL = $uploadPath . $image_fullName;
+            $success = $image->move($uploadPath, $image_fullName);
+            $data['admin_photo'] = $imageURL;
+            $brand = DB::table('admins')->where('id',$id)->update($data);
+
+            $notification = array(
+                'messege' => 'Admin Profile Updated Successful',
+                'alert-type' => 'success'
+            );
+            return Redirect()->route('admin.profile')->with($notification);
+
+        }else{
+            $brand = DB::table('admins')->where('id',$id)->update($data);
+            $notification = array(
+                'messege' => 'Admin Profile Updated Successful',
+                'alert-type' => 'success'
+            );
+            return Redirect()->route('admin.profile')->with($notification);
+        }
+    }
+
+
 
     public function logout()
     {

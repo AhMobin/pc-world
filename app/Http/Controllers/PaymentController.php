@@ -72,6 +72,7 @@ class PaymentController extends Controller{
         $data['tranx_id'] = $request->tranx_id;
         $data['paying_amount'] = $request->paying_amount;
 
+        $data['subtotal_amount']=$request->subtotal_amount;
         $data['shipping_charge'] = $request->shipping_charge;
         $data['tax'] = $request->tax;
         $data['total_amount'] = $request->total_amount;

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
+use Auth;
 
 class PageController extends Controller
 {
@@ -29,19 +31,16 @@ class PageController extends Controller
 
 
     public function GearPage(){
-        return view('pages.gear.gear');
-    }
-
-    public function GamingDesktop(){
-        return view('pages.desktop.gaming_desktop');
-    }
-
-    public function BuildDesktop(){
-        return view('pages.desktop.custom_desktop');
+        $brands = DB::table('brands')->get();
+        return view('pages.gear.gear', compact('brands'));
     }
 
     public function Workstation(){
         return view('pages.desktop.workstation');
+    }
+
+    public function BuildDesktop(){
+        return view('pages.desktop.custom_desktop');
     }
 
     public function GamingLaptop(){
@@ -51,5 +50,4 @@ class PageController extends Controller
     public function NormalLaptop(){
         return view('pages.laptop.normal_laptop');
     }
-
 }

@@ -25,7 +25,7 @@
                         <tbody>
                         @foreach($subs as $row)
                             <tr>
-                                <td><input type="checkbox">&nbsp; {{ $row->id }}</td>
+                                <td>{{ $row->id }}</td>
                                 <td>{{ $row->email }}</td>
                                 <td>{{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</td>
                                 <td>

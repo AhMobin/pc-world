@@ -83,11 +83,14 @@
                                     <td class="product-subtotal">${{ $row->price * $row->qty }}</td>
                                     <td class="product-remove"><a href="{{ url('remove/cart/'.$row->rowId) }}"><i class="icon-trash icons"></i></a></td>
                                 </tr>
-
                                 </tbody>
                                 @endforeach
+
                             </table>
                         </div>
+
+
+
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="buttons-cart--inner">
@@ -132,12 +135,12 @@
                                         <ul class="cart__price">
                                             <li>${{ Cart::subtotal() }}</li>
                                             <li>${{ Cart::tax() }}</li>
-                                            <li>0</li>
+                                            <li>$5</li>
                                         </ul>
                                     </div>
                                     <div class="cart__total">
                                         <span>order total</span>
-                                        <span>${{ Cart::total() }}</span>
+                                        <span>${{ Cart::total()+5 }}</span>
                                     </div>
                                     <ul class="payment__btn">
                                         <li class="active"><a href="{{ route('checkout.product') }}">checkout</a></li>

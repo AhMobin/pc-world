@@ -99,9 +99,8 @@
                                 <ul class="main__menu" style="font-weight: bold">
                                     <li class="drop"><a href="#">{{'Desktop'}}</a>
                                         <ul class="dropdown">
-{{--                                            <li><a href="{{ route('gaming.desktop') }}">{{'Gaming Desktop'}}</a></li>--}}
                                             <li><a href="{{ route('build.desktop') }}">{{'Custom Build'}}</a></li>
-                                            <li><a href="{{ route('workstation.desktop') }}">{{'Workstation Desktop'}}</a></li>
+                                            <li><a href="{{ route('workstation.desktop') }}">{{'Workstation'}}</a></li>
                                         </ul>
                                     </li>
                                     <li class="drop"><a href="#">{{'Laptop'}}</a>
@@ -127,9 +126,8 @@
                                         <li class="drop"><a href="{{URL::to('/')}}">{{'Home'}}</a></li>
                                         <li><a href="#">{{'Desktop'}}</a>
                                             <ul>
-{{--                                                <li><a href="#">{{'Gaming Desktop'}}</a></li>--}}
                                                 <li><a href="{{ route('build.desktop') }}">{{'Custom Build'}}</a></li>
-                                                <li><a href="#">{{'Workstation Desktop'}}</a></li>
+                                                <li><a href="{{ route('workstation.desktop') }}">{{'Workstation'}}</a></li>
                                             </ul>
                                         </li>
 
@@ -156,7 +154,6 @@
                                 <div class="header__search search search__open">
                                     <a href="#"><i class="icon-magnifier icons"></i></a>
                                 </div>
-
                                 @guest
                                     <div class="header__account">
                                         <a href="{{ route('login') }}" title="User Login"><i class="icon-user icons"></i></a>
@@ -165,9 +162,6 @@
                                     <div class="header__account">
                                         <a href="{{ route('user.account') }}" title="User Account"><i class="icon-user icons"></i></a>
                                     </div>
-{{--                                    <div class="header__account">--}}
-{{--                                        <a href="{{ route('user.logout') }}" title="Logout"><i class="icon-logout icons"></i></a>--}}
-{{--                                    </div>--}}
                                 @endguest
 
                                 @guest
@@ -248,22 +242,6 @@
                         </div>
                     </div>
                     @endforeach
-
-{{--                    <div class="shp__single__product">--}}
-{{--                        <div class="shp__pro__thumb">--}}
-{{--                            <a href="#">--}}
-{{--                                <img src="{{asset('public/frontend/images/product-2/sm-smg/2.jpg')}}" alt="product images">--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                        <div class="shp__pro__details">--}}
-{{--                            <h2><a href="#">Brone Candle</a></h2>--}}
-{{--                            <span class="quantity">QTY: 1</span>--}}
-{{--                            <span class="shp__price">$25.00</span>--}}
-{{--                        </div>--}}
-{{--                        <div class="remove__btn">--}}
-{{--                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                 </div>
                 <ul class="shoping__total">
                     <li class="subtotal">Subtotal:</li>
@@ -327,17 +305,24 @@
                         </div>
                     </div>
                     <!-- End Single Footer Widget -->
+
                     <!-- Start Single Footer Widget -->
+
+
                     <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
                         <div class="footer">
                             <h2 class="title__line--2">my account</h2>
                             <div class="ft__inner">
                                 <ul class="ft__list">
-                                    <li><a href="#">My Account</a></li>
-                                    <li><a href="#">My Cart</a></li>
-                                    <li><a href="#">Login</a></li>
-                                    <li><a href="#">Wishlist</a></li>
-                                    <li><a href="#">Checkout</a></li>
+                                    @guest
+                                        <li><a href="{{ route('login') }}">Login</a></li>
+                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                    @else
+                                        <li><a href="{{ route('user.account') }}">My Account</a></li>
+                                        <li><a href="{{ url('view/cart/') }}">My Cart</a></li>
+                                        <li><a href="{{ route('view.wishlist') }}">Wishlist</a></li>
+                                        <li><a href="{{ route('checkout.product') }}">Checkout</a></li>
+                                    @endguest
                                 </ul>
                             </div>
                         </div>
@@ -345,18 +330,7 @@
                     <!-- End Single Footer Widget -->
                     <!-- Start Single Footer Widget -->
                     <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
-                        <div class="footer">
-                            <h2 class="title__line--2">Our service</h2>
-                            <div class="ft__inner">
-                                <ul class="ft__list">
-                                    <li><a href="#">My Account</a></li>
-                                    <li><a href="#">My Cart</a></li>
-                                    <li><a href="#">Login</a></li>
-                                    <li><a href="#">Wishlist</a></li>
-                                    <li><a href="#">Checkout</a></li>
-                                </ul>
-                            </div>
-                        </div>
+
                     </div>
                     <!-- End Single Footer Widget -->
                     <!-- Start Single Footer Widget -->
@@ -388,8 +362,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="copyright__inner">
-                            <p>Copyright© <a href="#">Online Broad PC Centre.</a>. All right reserved. <script>document.write(new Date().getFullYear());</script>.</p>
-                            <a href="#"><img src="{{asset('public/frontend/images/others/shape/paypol.png')}}" alt="payment images"></a>
+                            <p>Copyright© <a href="#">Online PC World.</a>. All right reserved. <script>document.write(new Date().getFullYear());</script>.</p>
                         </div>
                     </div>
                 </div>

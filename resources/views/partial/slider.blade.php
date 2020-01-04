@@ -23,7 +23,7 @@
                                     <li>Lorem ipsum dolor sit amet</li>
                                 </ul>
                                 <div class="cr__btn">
-                                    <a href="#">Shop Now</a>
+                                    <a href="{{ route('build.desktop') }}">Build Now</a>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                     <li>Lorem ipsum dolor sit amet</li>
                                 </ul>
                                 <div class="cr__btn">
-                                    <a href="#">Shop Now</a>
+                                    <a href="{{ route('build.desktop') }}">Build Now</a>
                                 </div>
                             </div>
                         </div>
@@ -86,8 +86,8 @@
                     <div class="col-md-7 col-sm-7 col-xs-12 col-lg-6">
                         <div class="slide">
                             <div class="slider__inner">
-                                <h2>THE 16 SUPER SERIES</h2>
-                                <p>CNET CALLS ORIGIN PC BEST FOR 4K AND HDR PERFORMANCE</p>
+                                <h2>PLAY NOW, PAY LATER</h2>
+                                <p>Purchase Select Systems and Get:</p>
                                 <ul>
                                     <li>Lorem ipsum dolor sit amet</li>
                                     <li>Lorem ipsum dolor sit amet</li>
@@ -95,10 +95,15 @@
                                     <li>Lorem ipsum dolor sit amet</li>
                                 </ul>
                                 <div class="cr__btn">
-                                    <a href="#">Shop Now</a>
+                                    <a href="{{ route('build.desktop') }}">Build Now</a>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
+                        {{--                        <div class="slide__thumb">--}}
+                        {{--                            <img src="" alt="slider images">--}}
+                        {{--                        </div>--}}
                     </div>
                 </div>
             </div>

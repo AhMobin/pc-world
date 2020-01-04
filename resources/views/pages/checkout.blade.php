@@ -94,18 +94,18 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                                {{--                                <div class="ht__coupon__code">--}}
-                                {{--                                    <span>enter your discount code</span>--}}
-                                {{--                                    <div class="coupon__box">--}}
-                                {{--                                        <input type="text" placeholder="">--}}
-                                {{--                                        <div class="ht__cp__btn">--}}
-                                {{--                                            <a href="#">enter</a>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
-                            </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+{{--                                <div class="ht__coupon__code">--}}
+{{--                                    <span>enter your discount code</span>--}}
+{{--                                    <div class="coupon__box">--}}
+{{--                                        <input type="text" placeholder="">--}}
+{{--                                        <div class="ht__cp__btn">--}}
+{{--                                            <a href="#">enter</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+                        </div>
 
 
                             <div class="col-md-6 col-sm-12 col-xs-12 smt-40 xmt-40">
@@ -120,12 +120,12 @@
                                         <ul class="cart__price">
                                             <li>${{ Cart::subtotal() }}</li>
                                             <li>${{ Cart::tax() }}</li>
-                                            <li>0</li>
+                                            <li>$5</li>
                                         </ul>
                                     </div>
                                     <div class="cart__total">
                                         <span>order total</span>
-                                        <span>${{ Cart::total() }}</span>
+                                        <span>${{ Cart::total()+5 }}</span>
                                     </div>
                                     <ul class="payment__btn">
                                         <li><a href="{{ route('order.process') }}">Order Now</a></li>

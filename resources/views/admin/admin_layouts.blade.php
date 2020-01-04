@@ -75,20 +75,7 @@
                     <li class="nav-item"><a href="{{ route('sub.categories') }}" class="nav-link">Sub-categories</a></li>
                     <li class="nav-item"><a href="{{ route('brands') }}" class="nav-link">Brands</a></li>
                 </ul>
-{{--                <a href="#" class="sl-menu-link">--}}
-{{--                    <div class="sl-menu-item">--}}
-{{--                        <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>--}}
-{{--                        <span class="menu-item-label">Forms</span>--}}
-{{--                        <i class="menu-item-arrow fa fa-angle-down"></i>--}}
-{{--                    </div><!-- menu-item -->--}}
-{{--                </a><!-- sl-menu-link -->--}}
-{{--                <ul class="sl-menu-sub nav flex-column">--}}
-{{--                    <li class="nav-item"><a href="form-elements.html" class="nav-link">Form Elements</a></li>--}}
-{{--                    <li class="nav-item"><a href="form-layouts.html" class="nav-link">Form Layouts</a></li>--}}
-{{--                    <li class="nav-item"><a href="form-validation.html" class="nav-link">Form Validation</a></li>--}}
-{{--                    <li class="nav-item"><a href="form-wizards.html" class="nav-link">Form Wizards</a></li>--}}
-{{--                    <li class="nav-item"><a href="form-editor-text.html" class="nav-link">Text Editor</a></li>--}}
-{{--                </ul>--}}
+
                 <a href="#" class="sl-menu-link">
                     <div class="sl-menu-item">
                         <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
@@ -100,34 +87,21 @@
                     <li class="nav-item"><a href="{{ route('add.product') }}" class="nav-link">Add Product</a></li>
                     <li class="nav-item"><a href="{{ route('all.product') }}" class="nav-link">All Products</a></li>
                 </ul>
-{{--                <a href="#" class="sl-menu-link">--}}
-{{--                    <div class="sl-menu-item">--}}
-{{--                        <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>--}}
-{{--                        <span class="menu-item-label">Tables</span>--}}
-{{--                        <i class="menu-item-arrow fa fa-angle-down"></i>--}}
-{{--                    </div><!-- menu-item -->--}}
-{{--                </a><!-- sl-menu-link -->--}}
-{{--                <ul class="sl-menu-sub nav flex-column">--}}
-{{--                    <li class="nav-item"><a href="table-basic.html" class="nav-link">Basic Table</a></li>--}}
-{{--                    <li class="nav-item"><a href="table-datatable.html" class="nav-link">Data Table</a></li>--}}
-{{--                </ul>--}}
-{{--                <a href="#" class="sl-menu-link">--}}
-{{--                    <div class="sl-menu-item">--}}
-{{--                        <i class="menu-item-icon icon ion-ios-navigate-outline tx-24"></i>--}}
-{{--                        <span class="menu-item-label">Maps</span>--}}
-{{--                        <i class="menu-item-arrow fa fa-angle-down"></i>--}}
-{{--                    </div><!-- menu-item -->--}}
-{{--                </a><!-- sl-menu-link -->--}}
-{{--                <ul class="sl-menu-sub nav flex-column">--}}
-{{--                    <li class="nav-item"><a href="map-google.html" class="nav-link">Google Maps</a></li>--}}
-{{--                    <li class="nav-item"><a href="map-vector.html" class="nav-link">Vector Maps</a></li>--}}
-{{--                </ul>--}}
-{{--                <a href="mailbox.html" class="sl-menu-link">--}}
-{{--                    <div class="sl-menu-item">--}}
-{{--                        <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>--}}
-{{--                        <span class="menu-item-label">Mailbox</span>--}}
-{{--                    </div><!-- menu-item -->--}}
-{{--                </a><!-- sl-menu-link -->--}}
+
+                <a href="#" class="sl-menu-link">
+                    <div class="sl-menu-item">
+                        <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+                        <span class="menu-item-label">Orders</span>
+                        <i class="menu-item-arrow fa fa-angle-down"></i>
+                    </div><!-- menu-item -->
+                </a><!-- sl-menu-link -->
+                <ul class="sl-menu-sub nav flex-column">
+                    <li class="nav-item"><a href="{{ route('new.order') }}" class="nav-link">Pending Order</a></li>
+                    <li class="nav-item"><a href="{{ route('payment.accepted') }}" class="nav-link">Payment Accept</a></li>
+                    <li class="nav-item"><a href="{{ route('order.run.progress') }}" class="nav-link">Order In Progress</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.delivered.order') }}" class="nav-link">Delivered Order</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.cancel.progress') }}" class="nav-link">Canceled Order</a></li>
+                </ul>
 
                 <a href="#" class="sl-menu-link">
                     <div class="sl-menu-item">
@@ -158,12 +132,12 @@
                 <nav class="nav">
                     <div class="dropdown">
                         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                            <span class="logged-name">Jane<span class="hidden-md-down"> Doe</span></span>
-                            <img src="{{ asset('public/backend/img/img3.jpg')}}" class="wd-32 rounded-circle" alt="">
+                            <span class="logged-name">{{ Auth::user()->name }}</span>
+                            <img src="{{ url(Auth::user()->admin_photo) }}" class="wd-32 rounded-circle" alt="">
                         </a>
                         <div class="dropdown-menu dropdown-menu-header wd-200">
                             <ul class="list-unstyled user-profile-nav">
-                                <li><a href="#"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
+                                <li><a href="{{ route('admin.profile') }}"><i class="icon ion-ios-person-outline"></i> Profile</a></li>
                                 <li><a href="{{ route('admin.password.change') }}"><i class="icon ion-ios-gear-outline"></i> Change Password</a></li>
                                 <li><a href="{{ route('admin.logout') }}"><i class="icon ion-power"></i> Sign Out</a></li>
                             </ul>
@@ -171,12 +145,12 @@
                     </div><!-- dropdown -->
                 </nav>
                 <div class="navicon-right">
-                    <a id="btnRightMenu" href="" class="pos-relative">
-                        <i class="icon ion-ios-bell-outline"></i>
-                        <!-- start: if statement -->
-                        <span class="square-8 bg-danger"></span>
-                        <!-- end: if statement -->
-                    </a>
+{{--                    <a id="btnRightMenu" href="" class="pos-relative">--}}
+{{--                        <i class="icon ion-ios-bell-outline"></i>--}}
+{{--                        <!-- start: if statement -->--}}
+{{--                        <span class="square-8 bg-danger"></span>--}}
+{{--                        <!-- end: if statement -->--}}
+{{--                    </a>--}}
                 </div><!-- navicon-right -->
             </div><!-- sl-header-right -->
         </div><!-- sl-header -->

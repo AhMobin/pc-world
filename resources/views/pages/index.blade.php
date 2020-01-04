@@ -88,7 +88,7 @@
                         <div class="fr__prize__inner">
                             <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
                             <h3>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem consequuntur dicta eligendi reprehenderit similique"</h3>
-                            <a class="fr__btn" href="#">Shop Now</a>
+                            <a class="fr__btn" href="{{ route('build.desktop') }}">Shop Now</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -111,7 +111,7 @@
                         <div class="fr__prize__inner">
                             <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
                             <h3>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem consequuntur dicta eligendi reprehenderit similique"</h3>
-                            <a class="fr__btn" href="#">Shop Now</a>
+                            <a class="fr__btn" href="{{ route('build.desktop') }}">Shop Now</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -134,7 +134,7 @@
                         <div class="fr__prize__inner">
                             <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
                             <h3>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem consequuntur dicta eligendi reprehenderit similique"</h3>
-                            <a class="fr__btn" href="#">Shop Now</a>
+                            <a class="fr__btn" href="{{ route('build.desktop') }}">Shop Now</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -189,21 +189,13 @@
                                         <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
                                     </ul>
                                 </div>
-                                <div class="fr__hover__info">
-                                    <ul class="product__action">
-                                        <li><a href="#"><i class="icon-heart icons"></i></a></li>
 
-                                        <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-
-                                        <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                                    </ul>
-                                </div>
                                 <div class="fr__product__inner">
                                     <ul>
                                         <li><h3 class="recom__price">$1013</h3></li>
                                     </ul>
                                     <br>
-                                    <a class="fr__btn" href="#">Customize Now</a>
+                                    <a class="fr__btn" href="{{ route('build.desktop') }}">Customize Now</a>
                                 </div>
                             </div>
                         </div>
@@ -231,21 +223,12 @@
                                         <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
                                     </ul>
                                 </div>
-                                <div class="fr__hover__info">
-                                    <ul class="product__action">
-                                        <li><a href="#"><i class="icon-heart icons"></i></a></li>
-
-                                        <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-
-                                        <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                                    </ul>
-                                </div>
                                 <div class="fr__product__inner">
                                     <ul>
                                         <li><h3 class="recom__price">$1013</h3></li>
                                     </ul>
                                     <br>
-                                    <a class="fr__btn" href="#">Customize Now</a>
+                                    <a class="fr__btn" href="{{ route('build.desktop') }}">Customize Now</a>
                                 </div>
                             </div>
                         </div>
@@ -273,21 +256,12 @@
                                         <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
                                     </ul>
                                 </div>
-                                <div class="fr__hover__info">
-                                    <ul class="product__action">
-                                        <li><a href="#"><i class="icon-heart icons"></i></a></li>
-
-                                        <li><a href="#"><i class="icon-handbag icons"></i></a></li>
-
-                                        <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                                    </ul>
-                                </div>
                                 <div class="fr__product__inner">
                                     <ul>
                                         <li><h3 class="recom__price">$1013</h3></li>
                                     </ul>
                                     <br>
-                                    <a class="fr__btn" href="#">Customize Now</a>
+                                    <a class="fr__btn" href="{{ route('build.desktop') }}">Customize Now</a>
                                 </div>
                             </div>
                         </div>

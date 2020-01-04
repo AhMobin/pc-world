@@ -24,6 +24,10 @@ Route::get('admin/reset/password/{token}', 'Admin\ResetPasswordController@showRe
 Route::post('admin/update/reset', 'Admin\ResetPasswordController@reset')->name('admin.reset.update');
 Route::get('/admin/Change/Password','AdminController@ChangePassword')->name('admin.password.change');
 Route::post('/admin/password/update','AdminController@Update_pass')->name('admin.password.update');
+Route::get('admin/profile','AdminController@AdminProfile')->name('admin.profile');
+Route::get('edit/admin/profile/{id}','AdminController@EditAdminProfile');
+Route::post('update/profile/{id}','AdminController@UpdateAdminProfile');
+
 Route::get('admin/logout', 'AdminController@logout')->name('admin.logout');
 
 //*****************************************************
@@ -75,9 +79,32 @@ Route::get('get/subcategory/{category_id}','Admin\ProductController@getSubcatego
 Route::get('go/back','Admin\ProductController@backToProductList');
 
 
+////orders section
+// pending orders
+Route::get('admin/pending/orders/list/','Admin\OrderController@NewOrder')->name('new.order');
+// paid orders
+Route::get('admin/payment/accepted/orders/list/','Admin\OrderController@PaidOrder')->name('payment.accepted');
+// processing orders
+Route::get('admin/order/delivery/progress/list/','Admin\OrderController@DeliverProgressOrder')->name('order.run.progress');
+// delivered orders
+Route::get('admin/order/delivered/list/','Admin\OrderController@DeliveredOrder')->name('admin.delivered.order');
+// pending orders
+Route::get('admin/order/cancel/list/','Admin\OrderController@CanceledOrder')->name('admin.cancel.progress');
+
+//view orders details with status
+Route::get('admin/view/order/{id}','Admin\OrderController@ViewOrder');
+
+//accept - delete - progress - delivered order
+Route::get('admin/payment/accept/{id}','Admin\OrderController@AcceptOrder');
+Route::get('admin/payment/cancel/{id}','Admin\OrderController@CancelOrder');
+Route::get('product/delivery/progress/{id}','Admin\OrderController@OrderInProgress');
+Route::get('admin/delivery/done/{id}','Admin\OrderController@OrderDelivered');
+
+
+
 
 //**********************************************************
-//frontend section routes =================================
+//Frontend section routes =================================
 //*****************************************************
 
 //pages
@@ -87,6 +114,7 @@ Route::get('contact/us','PageController@ContactPage')->name('contact');
 Route::get('about/us','PageController@AboutPage')->name('about');
 Route::get('user/profile','PageController@UserProfilePage')->name('user.account');
 Route::get('configure/custom/desktop','PageController@BuildDesktop')->name('build.desktop');
+Route::get('desktop','PageController@Desktop')->name('desktop');
 
 
 Route::get('gears/accessories','PageController@GearPage')->name('gears');
