@@ -60,7 +60,7 @@
             margin-bottom: 30px;
         }
         .click{
-            height: 70px;
+            height: 50px;
             background-color: darkgray;
             position: relative;
         }
@@ -255,30 +255,32 @@
                             <div class="card card-body">
 
                                 @foreach($cpu as $pros)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$pros->id) }}" method="post">
                                             @csrf
                                             <div class="ht__cat__thumb">
                                                 <ul style="text-align: center">
                                                     <li style="text-align: center">
-                                                        <a href="#"><img src="{{ url($pros->product_image_one) }}" alt="" height="100px" width="80px"></a>
+                                                        <a href="#">
+                                                            <img src="{{ url($pros->product_image_one) }}" alt="" style="width: 115px;">
+                                                        </a>
                                                     </li>
-                                                    <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $pros->brand_name }}</li>
+                                                    {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $pros->brand_name }}</li> --}}
                                                     <li style="padding: 10px; text-align: center">
-                                                        <a href="#"><h5 style="color: #fff">{{ $pros->product_name }}</h5></a>
+                                                        <a href="#"><p style="color: #fff">{{ $pros->product_name }}</p></a>
                                                     </li>
-                                                    <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $pros->product_model }} </li>
+                                                    {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $pros->product_model }} </li> --}}
                                                     <input type="hidden" name="qty" value="1">
                                                 </ul>
                                             </div>
 
-                                            <div class="fr__product__inner">
+                                            <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                                 <ul>
-                                                    <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $pros->selling_prize }}</h3></li>
+                                                    <li><strong style="color: #fff">Price: </strong><h5 class="recom__price" style="color: maroon">{{ $pros->selling_prize }}<sup>Tk</sup></h5></li>
                                                 </ul>
                                                 <br>
-                                                    <button class="fr__btn addCart"  data-id="{{ $pros->id }}">ADD TO CART</button>
+                                                    <button class="fr__btn addCart" data-id="{{ $pros->id }}">ADD TO CART</button>
                                             </div>
                                         </form>
                                     </div>
@@ -302,27 +304,27 @@
                             <div class="collapse" id="motherboard">
                                 <div class="card card-body">
                                     @foreach($motherboard as $mb)
-                                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                    <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                         <div class="category cat_bg">
                                             <form action="{{ url('custom/product/cart/'.$mb->id) }}" method="post">
                                                 @csrf
                                             <div class="ht__cat__thumb">
                                                 <ul style="text-align: center">
                                                     <li style="text-align: center">
-                                                        <a href="#"><img src="{{ url($mb->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                        <a href="#"><img src="{{ url($mb->product_image_one) }}" alt="" style="width: 115px;"></a>
                                                     </li>
-                                                    <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $mb->brand_name }}</li>
+                                                    {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $mb->brand_name }}</li> --}}
                                                     <li style="padding: 10px; text-align: center">
-                                                        <a href="#"><h5 style="color: #fff">{{ $mb->product_name }}</h5></a>
+                                                        <a href="#"><p style="color: #fff">{{ $mb->product_name }}</p></a>
                                                     </li>
-                                                    <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $mb->product_model }} </li>
+                                                    {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $mb->product_model }} </li> --}}
                                                     <input type="hidden" name="qty" value="1">
                                                 </ul>
                                             </div>
 
-                                            <div class="fr__product__inner">
+                                            <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                                 <ul>
-                                                    <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $mb->selling_prize }}</h3></li>
+                                                    <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $mb->selling_prize }}<sup>Tk</sup></h3></li>
                                                 </ul>
                                                 <br>
                                                 <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -352,27 +354,27 @@
                         <div class="collapse" id="memory">
                             <div class="card card-body">
                                 @foreach($memory as $mem)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$mem->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($mem->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($mem->product_image_one) }}" alt="" style="width: 115px;"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $mem->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $mem->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $mem->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $mem->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $mem->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $mem->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $mem->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $mem->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -399,27 +401,27 @@
                         <div class="collapse" id="cooling">
                             <div class="card card-body">
                                 @foreach($cooling as $cool)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$cool->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($cool->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($cool->product_image_one) }}" alt="" style="width:110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $cool->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $cool->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $cool->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $cool->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $cool->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $cool->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $cool->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $cool->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -447,27 +449,27 @@
                             <div class="collapse" id="casefan">
                                 <div class="card card-body">
                                     @foreach($casefan as $fan)
-                                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                    <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                         <div class="category cat_bg">
                                             <form action="{{ url('custom/product/cart/'.$fan->id) }}" method="post">
                                                 @csrf
                                             <div class="ht__cat__thumb">
                                                 <ul style="text-align: center">
                                                     <li style="text-align: center">
-                                                        <a href="#"><img src="{{ url($fan->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                        <a href="#"><img src="{{ url($fan->product_image_one) }}" alt="" style="width:110px"></a>
                                                     </li>
-                                                    <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $fan->brand_name }}</li>
+                                                    {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $fan->brand_name }}</li> --}}
                                                     <li style="padding: 10px; text-align: center">
-                                                        <a href="#"><h5 style="color: #fff">{{ $fan->product_name }}</h5></a>
+                                                        <a href="#"><p style="color: #fff">{{ $fan->product_name }}</p></a>
                                                     </li>
-                                                    <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $fan->product_model }} </li>
+                                                    {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $fan->product_model }} </li> --}}
                                                     <input type="hidden" name="qty" value="1">
                                                 </ul>
                                             </div>
 
-                                            <div class="fr__product__inner">
+                                            <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                                 <ul>
-                                                    <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $fan->selling_prize }}</h3></li>
+                                                    <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $fan->selling_prize }}<sup>Tk</sup></h3></li>
                                                 </ul>
                                                 <br>
                                                 <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -494,27 +496,27 @@
                         <div class="collapse" id="gpu">
                             <div class="card card-body">
                                 @foreach($gpu as $gp)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$gp->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($gp->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($gp->product_image_one) }}" alt="" style="width: 110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $gp->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $gp->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $gp->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $gp->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $gp->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $gp->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $gp->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $gp->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -541,27 +543,27 @@
                         <div class="collapse" id="storagedrive">
                             <div class="card card-body">
                                 @foreach($storage as $store)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$store->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($store->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($store->product_image_one) }}" alt="" style="width: 110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $store->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $store->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $store->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $store->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $store->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $store->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $store->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $store->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -588,27 +590,27 @@
                         <div class="collapse" id="powersupply">
                             <div class="card card-body">
                                 @foreach($powersup as $power)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$power->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($power->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($power->product_image_one) }}" alt="" style="width:110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $power->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $power->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $power->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $power->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $power->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $power->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $power->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $power->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -636,27 +638,27 @@
                         <div class="collapse" id="hdcase">
                             <div class="card card-body">
                                 @foreach($hddcase as $hdc)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$hdc->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($hdc->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($hdc->product_image_one) }}" alt="" style="width: 110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $hdc->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $hdc->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $hdc->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $hdc->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $hdc->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $hdc->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $hdc->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $hdc->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -684,27 +686,27 @@
                         <div class="collapse" id="os">
                             <div class="card card-body">
                                 @foreach($os as $op)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$op->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($op->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($op->product_image_one) }}" alt="" style="width: 110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $op->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $op->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $op->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $op->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $op->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $op->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $op->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $op->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -732,27 +734,27 @@
                         <div class="collapse" id="osdrive">
                             <div class="card card-body">
                                 @foreach($osd as $od)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$od->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($od -> product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($od -> product_image_one) }}" alt="" style="width:110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $od->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $od->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $od->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $od->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $od->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $od->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $od->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $od->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -780,27 +782,27 @@
                         <div class="collapse" id="addoncards">
                             <div class="card card-body">
                                 @foreach($addon as $add)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$add->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($add->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($add->product_image_one) }}" alt="" style="width:110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $add->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $add->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $add->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $add->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $add->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $add->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $add->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $add->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -827,27 +829,27 @@
                         <div class="collapse" id="baydevice">
                             <div class="card card-body">
                                 @foreach($bays as $bay)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$bay->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($bay->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($bay->product_image_one) }}" alt="" style="width: 110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $bay->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $bay->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $bay->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $bay->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $bay->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $bay->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $bay->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $bay->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -874,27 +876,27 @@
                         <div class="collapse" id="display">
                             <div class="card card-body">
                                 @foreach($display as $dis)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$dis->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($dis->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($dis->product_image_one) }}" alt="" style="width:110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $dis->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $dis->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $dis->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $dis->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $dis->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $dis->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -921,27 +923,27 @@
                         <div class="collapse" id="softwares">
                             <div class="card card-body">
                                @foreach($software as $soft)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$soft->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($soft->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($soft->product_image_one) }}" alt="" style="width:110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $soft->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $soft->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
                                                     <a href="#"><h5 style="color: #fff">{{ $soft->product_name }}</h5></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $soft->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $soft->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $soft->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $soft->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>
@@ -979,27 +981,27 @@
                         <div class="collapse" id="shippingprotection">
                             <div class="card card-body">
                                 @foreach($shipping as $ship)
-                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                                     <div class="category cat_bg">
                                         <form action="{{ url('custom/product/cart/'.$ship->id) }}" method="post">
                                             @csrf
                                         <div class="ht__cat__thumb">
                                             <ul style="text-align: center">
                                                 <li style="text-align: center">
-                                                    <a href="#"><img src="{{ url($ship->product_image_one) }}" alt="" height="100px" width="100px"></a>
+                                                    <a href="#"><img src="{{ url($ship->product_image_one) }}" alt="" style="width:110px"></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $ship->brand_name }}</li>
+                                                {{-- <li><strong style="color: #fff">Brand: </strong> &nbsp; {{ $ship->brand_name }}</li> --}}
                                                 <li style="padding: 10px; text-align: center">
-                                                    <a href="#"><h5 style="color: #fff">{{ $ship->product_name }}</h5></a>
+                                                    <a href="#"><p style="color: #fff">{{ $ship->product_name }}</p></a>
                                                 </li>
-                                                <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $ship->product_model }} </li>
+                                                {{-- <li><strong style="color: #fff">Product Model: </strong> &nbsp;{{ $ship->product_model }} </li> --}}
                                                 <input type="hidden" name="qty" value="1">
                                             </ul>
                                         </div>
 
-                                        <div class="fr__product__inner">
+                                        <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $ship->selling_prize }}</h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $ship->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>

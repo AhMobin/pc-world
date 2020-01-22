@@ -77,18 +77,24 @@
     </div>
 </div>
 
+@php
+    $review = DB::table('featured_reviews')->where('status',1)->get();
+@endphp
+
+
 <!-- Start Review Slider-->
 <div class="slider__container slider--one bg__cat--3">
     <div class="slide__container slider__activation__wrap owl-carousel">
+        @foreach($review as $feat)
         <!-- Start single Review -->
         <section class="single__slide htc__good__sale bg__cat--3">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                         <div class="fr__prize__inner">
-                            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-                            <h3>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem consequuntur dicta eligendi reprehenderit similique"</h3>
-                            <a class="fr__btn" href="{{ route('build.desktop') }}">Shop Now</a>
+                            <h2>{{ $feat->feature_title }}</h2>
+                            <h3>"{{ $feat->feature_review }}"</h3>
+                            <a class="fr__btn" href="{{ $feat->feature_btn_link }}">{{ $feat->feature_btn }}</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -102,9 +108,10 @@
             </div>
         </section>
         <!-- End single Review -->
+        @endforeach
 
         <!-- Start single Review -->
-        <section class="single__slide htc__good__sale bg__cat--3">
+        <!-- <section class="single__slide htc__good__sale bg__cat--3">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -123,11 +130,11 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- End single Review -->
 
         <!-- Start single Review -->
-        <section class="single__slide htc__good__sale bg__cat--3 review__slider">
+        <!-- <section class="single__slide htc__good__sale bg__cat--3 review__slider">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -146,7 +153,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- End single Review -->
     </div>
 </div>
@@ -159,49 +166,54 @@
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
                             <h2 class="title__line" style="color: #fff">Our Recommendation</h2>
-                            <p style="color: #fff">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, quaerat?</p>
+                            <!-- <p style="color: #fff">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, quaerat?</p> -->
                         </div>
                     </div>
                 </div>
 
+                @php
+                    $recom = DB::table('our_recommendations')->where('status',1)->limit(4)->get();
+                @endphp
+
                 <div class="row">
                     <div class="product__wrap clearfix">
+                        @foreach($recom as $row)
                         <!-- Start Single Category -->
-                        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
-                            <div class="category cat_bg">
-                                <div class="ht__cat__thumb">
-                                    <ul style="text-align: center">
-                                        <li style="text-align: center">
-                                            <img src="{{ asset('public/frontend/images/product/desktops.jpg')}}" alt="" height="100px" width="150px">
-                                        </li>
-                                        <li style="padding: 10px; text-align: center">
-                                            <h5 style="color: #fff">Lorem ipsum dolor sit amet.</h5>
-                                        </li>
-                                        <hr>
+                        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+ 
+                                <div class="category cat_bg">
+                                    <div class="ht__cat__thumb">
+                                        <ul style="text-align: center">
+                                            <li style="text-align: center">
+                                                <img src="{{ url($row->recom_image)}}" alt="" height="100px" width="150px">
+                                            </li>
+                                            <li style="padding: 10px; text-align: center">
+                                                <h5 style="color: #fff">{{ $row->recom_title }}</h5>
+                                            </li>
+                                            <hr>
 
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                </div>
+                                            <li><i class="fa fa-check" style="color: #2b542c"></i> {{ $row->cpu }} </li>
+                                            <li><i class="fa fa-check" style="color: #2b542c"></i> {{ $row->motherboard }} </li>
+                                            <li><i class="fa fa-check" style="color: #2b542c"></i> {{ $row->ram }} </li>
+                                            <li><i class="fa fa-check" style="color: #2b542c"></i> {{ $row->gpu }} </li>
+                                            <li><i class="fa fa-check" style="color: #2b542c"></i> {{ $row->storage }} </li>
+                                        </ul>
+                                    </div>
 
-                                <div class="fr__product__inner">
-                                    <ul>
-                                        <li><h3 class="recom__price">$1013</h3></li>
-                                    </ul>
-                                    <br>
-                                    <a class="fr__btn" href="{{ route('build.desktop') }}">Customize Now</a>
+                                    <div class="fr__product__inner">
+                                        <ul>
+                                            <li><h3 class="recom__price">{{ $row->price }}<sup>TK</sup></h3></li>
+                                        </ul>
+                                        <br>
+                                        <button type="submit" class="fr__btn" style="border: none;">Add To Cart</a>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                         <!-- End Single Category -->
+                        @endforeach
+
                         <!-- Start Single Category -->
-                        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
+                        <!-- <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                             <div class="category cat_bg">
                                 <div class="ht__cat__thumb">
                                     <ul style="text-align: center">
@@ -225,16 +237,16 @@
                                 </div>
                                 <div class="fr__product__inner">
                                     <ul>
-                                        <li><h3 class="recom__price">$1013</h3></li>
+                                        <li><h3 class="recom__price">1013<sup>TK</sup></h3></li>
                                     </ul>
                                     <br>
                                     <a class="fr__btn" href="{{ route('build.desktop') }}">Customize Now</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End Single Category -->
                         <!-- Start Single Category -->
-                        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
+                <!--         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                             <div class="category cat_bg">
                                 <div class="ht__cat__thumb">
                                     <ul style="text-align: center">
@@ -258,13 +270,13 @@
                                 </div>
                                 <div class="fr__product__inner">
                                     <ul>
-                                        <li><h3 class="recom__price">$1013</h3></li>
+                                        <li><h3 class="recom__price">1013<sup>TK</sup></h3></li>
                                     </ul>
                                     <br>
                                     <a class="fr__btn" href="{{ route('build.desktop') }}">Customize Now</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End Single Category -->
 
                     </div>

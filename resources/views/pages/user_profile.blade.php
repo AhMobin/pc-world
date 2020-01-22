@@ -69,14 +69,13 @@
 
                         <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12 col-xs-12 d-flex align-center">
                             <div class="card" style="width: 18rem;">
-                                <img src="{{ asset('public/frontend/images/users/img2.jpg') }}" style="height: 90px; width: 90px; margin-left: 34%; border-radius: 50%;" >
+                                <img src="{{ url(Auth::user()->user_photo) }}" style="height: 90px; width: 90px; margin-left: 34%; border-radius: 50%;" >
                                 <div class="card-body">
                                     <p class="card-title text-center user_name">{{ Auth::user()->name }}</p>
                                 </div>
                                 <ul class="list-group">
+                                    <li class="list-group-item"><a href="{{ route('edit.user.profile') }}"> Edit Profile </a></li>
                                     <li class="list-group-item"><a href="{{ route('password.change') }}"> Password Change </a></li>
-                                    <li class="list-group-item"><a href="#"> Edit Profile </a></li>
-                                    <li class="list-group-item">Vestibulum at eros</li>
                                 </ul>
                                 <div class="card-body">
                                     <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>

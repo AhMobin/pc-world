@@ -29,10 +29,20 @@ class PageController extends Controller
         return view('pages.user_profile');
     }
 
+    public function userProfileEdit(){
+        $customer = DB::table('users')->where('id', Auth::id())->first();
+        return view('pages.userprofile_edit',compact('customer'));
+    }
+
 
     public function GearPage(){
-        $brands = DB::table('brands')->get();
-        return view('pages.gear.gear', compact('brands'));
+        $headphone = DB::table('products')
+        ->join('brands','products.brand_id','brands.id')
+        ->select('products.*','brands.brand_name')
+        ->where('category_id',3)->where('subcategory_id',5)->where('status',1)->orderBy('id','DESC')->get();
+
+        $gears = DB::table('subcategories')->where('category_id',3)->get();
+        return view('pages.gear.gear', compact('gears','headphone'));
     }
 
     public function Workstation(){

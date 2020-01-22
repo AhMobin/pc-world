@@ -8,12 +8,12 @@
         .wish{
             background-color: maroon;
         }
-        @foreach($color as $cl)
+        /* @foreach($color as $cl)
         .pro__color li{{'.'.$cl }} a {
             background: {{ $cl }} none repeat scroll 0 0;
             border: 1px solid black;
         }
-        @endforeach
+        @endforeach */
 
 
         /* -- quantity box -- */
@@ -149,11 +149,11 @@
                             <li class="old"><i class="icon-star icons"></i></li>
                         </ul>
                         <ul  class="pro__prize">
-                            <li class="old__prize">{{'$'. $product->selling_prize }}</li>
+                            <li class="old__prize">{{'BDT'. $product->selling_prize }}</li>
                             <li>
                             @php
                                 if($product->discount_prize != NULL){
-                                    echo '$'. $product->discount_prize;
+                                    echo 'BDT'. $product->discount_prize;
                                 }
                             @endphp
                             </li>

@@ -51,7 +51,10 @@
     @guest
     @else
         <!-- ########## START: LEFT PANEL ########## -->
-        <div class="sl-logo"><a href="{{ url('admin/home') }}"><i class="icon ion-android-star-outline"></i> PC WORLD</a></div>
+        @php
+            $logo = DB::table('logos')->where('status',1)->first();
+        @endphp
+        <div class="sl-logo"><a href="{{ url('admin/home') }}"><img src="{{ url($logo->branding_logo) }}" alt="logo images" height="120px" width="180px"></a></div>
         <div class="sl-sideleft">
 
             <div class="sl-sideleft-menu">
@@ -112,10 +115,26 @@
                 </a><!-- sl-menu-link -->
                 <ul class="sl-menu-sub nav flex-column">
                     <li class="nav-item"><a href="{{ route('show.newsletter') }}" class="nav-link">Newsletters</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Homepage Slider</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Logo</a></li>
-{{--                    <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li>--}}
                 </ul>
+
+                <a href="#" class="sl-menu-link">
+                    <div class="sl-menu-item">
+                        <i class="menu-item-icon icon ion-ios-gear-outline tx-22"></i>
+                        <span class="menu-item-label">Site Settings</span>
+                        <i class="menu-item-arrow fa fa-angle-down"></i>
+                    </div><!-- menu-item -->
+                </a><!-- sl-menu-link -->
+                <ul class="sl-menu-sub nav flex-column">
+                    <li class="nav-item"><a href="{{ route('view.logos') }}" class="nav-link">Logo</a></li>
+                    <li class="nav-item"><a href="{{ route('view.sliders') }}" class="nav-link">Sliders</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Bradcaumps Banner</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Homepage Category</a></li>
+                    <li class="nav-item"><a href="{{ route('views.featured.reivews')}}" class="nav-link">Featured Review</a></li>
+                    <li class="nav-item"><a href="{{ route('our.recommendation') }}" class="nav-link">Our Recommendation</a></li>
+                    <li class="nav-item"><a href="{{ route('our.focus.panel') }}" class="nav-link">Our Focus</a></li>
+                    <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li>
+                </ul>
+
             </div><!-- sl-sideleft-menu -->
 
             <br>

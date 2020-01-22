@@ -54,7 +54,7 @@
                             </div><!-- col-4 -->
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="form-control-label">Discount Price: <span class="tx-danger">*</span></label>
+                                    <label class="form-control-label">Discount Price:</label>
                                     <input class="form-control" type="text" name="discount_prize" value="{{ $product->discount_prize }}" >
                                 </div>
                             </div><!-- col-4 -->
@@ -153,7 +153,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
-                            <lebel>Image One (Main Thumbnail)<span class="tx-danger">*</span></lebel><br>
+                            <label>Image One (Main Thumbnail)<span class="tx-danger">*</span></label><br>
                             <label class="custom-file">
                                 <input type="file" id="file" class="custom-file-input" name="product_image_one" onchange="readURL(this);"  accept="image">
                                 <span class="custom-file-control"></span>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
-                            <lebel>Image Two <span class="tx-danger">*</span></lebel><br>
+                            <label>Image Two <span class="tx-danger">*</span></label><br>
                             <label class="custom-file">
                                 <input type="file" id="file" class="custom-file-input" name="product_image_two" onchange="readURL1(this);"  accept="image">
                                 <input type="hidden" name="old_two" value="{{ $product->product_image_two }}">
@@ -181,7 +181,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
-                            <lebel>Image Three <span class="tx-danger">*</span></lebel><br>
+                            <label>Image Three <span class="tx-danger">*</span></label><br>
                             <label class="custom-file">
                                 <input type="file" id="file" class="custom-file-input" name="product_image_three" onchange="readURL2(this);"  accept="image">
                                 <span class="custom-file-control"></span>

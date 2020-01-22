@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use DB;
+
 class HomeController extends Controller
 {
     /**
@@ -64,6 +66,42 @@ class HomeController extends Controller
                return Redirect()->back()->with($notification);
       }
 
+    }
+
+    public function userProfileUpdate(Request $request){
+        $id = Auth::id();
+        $data = array();
+        $data['name'] = $request->name;
+        $data['phone'] = $request->phone;
+        $data['email'] = $request->email;
+
+        $oldPhoto = $request->old_photo;
+        $image = $request->file('user_photo');
+
+        if($image) {
+            unlink($oldPhoto);
+            $image_name = hexdec(uniqid());
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_fullName = $image_name . '.' . $ext;
+            $uploadPath = 'public/frontend/images/users/';
+            $imageURL = $uploadPath . $image_fullName;
+            $success = $image->move($uploadPath, $image_fullName);
+            $data['user_photo'] = $imageURL;
+            $brand = DB::table('users')->where('id', $id)->update($data);
+
+            $notification = array(
+                'messege' => 'Customer Profile Updated Successful',
+                'alert-type' => 'success'
+            );
+            return Redirect()->route('home')->with($notification);
+        }else{
+            $brand = DB::table('users')->where('id',$id)->update($data);
+            $notification = array(
+                'messege' => 'Customer Profile Updated Successful',
+                'alert-type' => 'success'
+            );
+            return Redirect()->route('home')->with($notification);
+        }
     }
 
     public function Logout()

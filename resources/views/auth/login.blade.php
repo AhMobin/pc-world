@@ -36,8 +36,11 @@
                         <div class="account-box">
                             <div class="account-logo-box">
                                 <h2 class="text-uppercase text-center">
+                                    @php
+                                        $logo = DB::table('logos')->where('status',1)->first();
+                                    @endphp
                                     <a href="{{ url('/') }}" class="text-success">
-                                        <span><img src="{{asset('public/frontend/images/logo/pcw2.png')}}" alt="" height="60"></span>
+                                        <span><img src="{{url($logo->branding_logo)}}" alt="" height="60"></span>
                                     </a>
                                 </h2>
                                 <h4 class="text-uppercase font-bold m-b-5 m-t-50">{{ __('user login') }}</h4>

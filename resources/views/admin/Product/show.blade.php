@@ -19,7 +19,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Product Name</th>
+                            <th style="width: 10%">Product Name</th>
                             <th>Product Code</th>
                             <th>Product Image</th>
                             <th>Category</th>
@@ -33,7 +33,7 @@
                         @foreach($product as $row)
                             <tr>
                                 <td>{{ $row->id }}</td>
-                                <td>{{ $row->product_name }}</td>
+                                <td style="width: 10%">{{ $row->product_name }}</td>
                                 <td>{{ $row->product_code }}</td>
                                 <td class="text-center">
                                     <img src="{{ URL::to($row->product_image_one) }}" alt="" height="50" width="60">

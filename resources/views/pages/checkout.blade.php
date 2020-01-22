@@ -52,7 +52,7 @@
                                 <tr>
                                     <th class="product-thumbnail">products</th>
                                     <th class="product-name">name of products</th>
-                                    <th class="product-price">Price</th>
+                                    <th class="product-price">Price (BDT)</th>
                                     <th class="product-quantity">Quantity</th>
                                     <th class="product-color">Color</th>
                                     <th class="product-quantity">Size</th>
@@ -71,11 +71,11 @@
                                             {{--                                            <li>$75.2</li>--}}
                                             {{--                                        </ul>--}}
                                         </td>
-                                        <td class="product-price"><span class="amount">${{ $row->price }}</span></td>
+                                        <td class="product-price"><span class="amount">{{ $row->price }}</span></td>
                                         <td style="font-size: 16px; font-weight: bold;">{{ $row->qty }}</td>
                                         <td style="font-size: 16px; font-weight: bold; text-transform: capitalize">{{ $row->options->color }}</td>
                                         <td >{{ $row->options->size }}</td>
-                                        <td class="product-subtotal">${{ $row->price * $row->qty }}</td>
+                                        <td class="product-subtotal">{{ $row->price * $row->qty }}</td>
                                         <td class="product-remove"><a href="{{ url('remove/cart/'.$row->rowId) }}"><i class="icon-trash icons"></i></a></td>
                                     </tr>
                                 @endforeach
@@ -118,14 +118,14 @@
                                             <li>shipping</li>
                                         </ul>
                                         <ul class="cart__price">
-                                            <li>${{ Cart::subtotal() }}</li>
-                                            <li>${{ Cart::tax() }}</li>
-                                            <li>$5</li>
+                                            <li>{{ Cart::subtotal() }}</li>
+                                            <li>{{ Cart::tax() }}</li>
+                                            <li>-</li>
                                         </ul>
                                     </div>
                                     <div class="cart__total">
                                         <span>order total</span>
-                                        <span>${{ Cart::total()+5 }}</span>
+                                        <span>{{ Cart::total() }}</span>
                                     </div>
                                     <ul class="payment__btn">
                                         <li><a href="{{ route('order.process') }}">Order Now</a></li>

@@ -55,9 +55,9 @@
                                         <td class="product-name"><a href="#">{{ $row->product_name }}</a></td>
                                         <td class="product-price"><span class="amount">
                                                 @if($row->discount_prize == NULL)
-                                                    ${{ $row->selling_prize }}
+                                                    {{ $row->selling_prize }}<sup>TK</sup>
                                                 @else
-                                                    ${{ $row->discount_prize }}
+                                                    {{ $row->discount_prize }}<sup>TK</sup>
                                                  @endif
                                             </span></td>
                                         <td class="product-remove">

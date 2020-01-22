@@ -24,7 +24,7 @@
         $product = DB::table('products')
         ->join('brands','products.brand_id','brands.id')
         ->select('products.*','brands.brand_name')
-        ->where('category_id',1)->where('subcategory_id',2)->where('status',1)->orderBy('id','DESC')->get();
+        ->where('category_id',1)->where('subcategory_id',22)->where('status',1)->orderBy('id','DESC')->get();
     @endphp
 
     <!-- Start Bradcaump area -->
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="fr__product__inner">
                                     <ul>
-                                        <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">${{ $pr->selling_prize }}</h3></li>
+                                        <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $pr->selling_prize }}<sup>TK</sup></h3></li>
                                     </ul>
                                     <br>
                                     <button class="fr__btn addCart" data-id="{{ $pr-> id }}">ADD TO CART</button>

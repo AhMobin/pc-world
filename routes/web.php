@@ -102,6 +102,60 @@ Route::get('admin/delivery/done/{id}','Admin\OrderController@OrderDelivered');
 
 
 
+///site settings
+/// *******
+
+//logo
+Route::get('branding/logos','Admin\SiteSettingsController@ViewLogos')->name('view.logos');
+Route::post('upload/logo','Admin\SiteSettingsController@ChangeLogo')->name('change.logo');
+Route::get('logo/activate/{id}','Admin\SiteSettingsController@LogoActivation');
+Route::get('logo/deactivate/{id}','Admin\SiteSettingsController@LogoDeactivation');
+Route::get('logo/delete/{id}','Admin\SiteSettingsController@LogoDeletion');
+
+//sliders
+Route::get('view/sliders','Admin\SiteSettingsController@ViewSliders')->name('view.sliders');
+Route::post('add/new/slider','Admin\SiteSettingsController@AddSlider')->name('add.slider');
+Route::get('slider/view/{id}','Admin\SiteSettingsController@showSingleSlider');
+Route::get('slider/edit/{id}','Admin\SiteSettingsController@EditSlider');
+Route::post('update/slider/{id}','Admin\SiteSettingsController@UpdateSlider');
+Route::get('slider/delete/{id}','Admin\SiteSettingsController@DeleteSlider');
+Route::get('slider/activate/{id}','Admin\SiteSettingsController@ActivateSlider');
+Route::get('slider/deactivate/{id}','Admin\SiteSettingsController@DeactivateSlider');
+
+
+//our focus
+Route::get('admin/our/focus','Admin\SiteSettingsController@OurFocus')->name('our.focus.panel');
+Route::post('store/our/focus','Admin\SiteSettingsController@OurFocusStore')->name('store.focus');
+Route::get('focus/view/{id}','Admin\SiteSettingsController@ViewFocus');
+Route::get('focus/edit/{id}','Admin\SiteSettingsController@EditFocus');
+Route::post('update/focus/{id}','Admin\SiteSettingsController@UpdateFocus');
+Route::get('focus/active/{id}','Admin\SiteSettingsController@ActivateFocus');
+Route::get('focus/deactive/{id}','Admin\SiteSettingsController@DeactivateFocus');
+Route::get('focus/delete/{id}','Admin\SiteSettingsController@DeleteFocus');
+
+
+//featured review
+Route::get('view/featured/reviews','Admin\SiteSettingsController@ViewFeatures')->name('views.featured.reivews');
+Route::post('add/new/review','Admin\SiteSettingsController@AddFeaturedReview')->name('add.featured.product');
+Route::get('feature/review/view/{id}','Admin\SiteSettingsController@showSingleReview');
+Route::get('feature/review/edit/{id}','Admin\SiteSettingsController@EditReview');
+Route::post('update/feature/review/{id}','Admin\SiteSettingsController@UpdateReview');
+Route::get('feature/review/delete/{id}','Admin\SiteSettingsController@DeleteReview');
+Route::get('feature/review/activate/{id}','Admin\SiteSettingsController@ActivateReview');
+Route::get('feature/review/deactivate/{id}','Admin\SiteSettingsController@DeactivateReview');
+
+
+//our recommendation
+Route::get('our/recommendation','Admin\SiteSettingsController@ViewRecommendations')->name('our.recommendation');
+Route::post('add/new/recommendation','Admin\SiteSettingsController@AddRecommendation')->name('add.recommendation.product');
+Route::get('view/recommendation/{id}','Admin\SiteSettingsController@showRecommendation');
+Route::get('recommendation/edit/{id}','Admin\SiteSettingsController@EditRecommendation');
+Route::post('update/recommendation/{id}','Admin\SiteSettingsController@UpdateRecommendation');
+Route::get('recommendation/delete/{id}','Admin\SiteSettingsController@DeleteRecommendation');
+Route::get('recommendation/activate/{id}','Admin\SiteSettingsController@ActivateRecommendation');
+Route::get('recommendation/deactivate/{id}','Admin\SiteSettingsController@DeactivateRecommendation');
+
+
 
 //**********************************************************
 //Frontend section routes =================================
@@ -161,6 +215,11 @@ Route::post('custom/product/cart/{id}','ProductController@CustomBuildCart');
 //newsletters
 Route::post('users/subscribe','FrontController@StoreNewsletter')->name('store.newsletter');
 
+
+//show filtered branded product
+
+
+
 //custom desktop configure
 Route::post('upload/design','ProductController@uploadDesign');
 
@@ -173,3 +232,7 @@ Route::post('payment/process','PaymentController@PaymentProcess')->name('payment
 //bkash payment
 Route::post('paying/bkash','PaymentController@bKashPayment')->name('paying.bkash');
 
+
+//user profile edit
+Route::get('customer/profile/edit','PageController@userProfileEdit')->name('edit.user.profile');
+Route::post('customer/profile/update','HomeController@userProfileUpdate')->name('customer.profile.update');

@@ -61,7 +61,7 @@
                             <tr>
                                 <td class="product-name" style="font-size: 1rem; font-weight: bold">{{ $row->options->code }}</td>
                                 <td class="product-name" style="font-size: 1rem; font-weight: bold">{{ $row->name }}</td>
-                                <td class="product-price"><span class="amount">${{ $row->price }}</span></td>
+                                <td class="product-price"><span class="amount">{{ $row->price }}</span></td>
                                 <td style="font-size: 16px; font-weight: bold;">{{ $row->qty }}</td>
                                 <td class="product-subtotal">${{ $row->price * $row->qty }}</td>
                             </tr>
@@ -78,15 +78,15 @@
                         </tr>
                         <tr>
                             <th>Tax</th>
-                            <th>${{ Cart::tax() }}</th>
+                            <th>{{ Cart::tax() }}</th>
                         </tr>
                         <tr>
                             <th>Shipping Charge</th>
-                            <th>$5</th>
+                            <th>-</th>
                         </tr>
                         <tr>
                             <th>Total Payable</th>
-                            <th>${{ Cart::total()+5 }} <br><span style="font-weight: normal">BDT {{ round((Cart::total()+5)*85) }}</span></th>
+                            <th>{{ Cart::total() }}</span></th>
                         </tr>
                     </table>
                 </div>

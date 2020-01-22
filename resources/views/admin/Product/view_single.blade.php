@@ -78,7 +78,7 @@
                             </div><!-- col-4 -->
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Selling Price: ($)</label>
+                                    <label class="form-control-label">Selling Price: (BDT)</label>
                                     <input class="form-control" type="text" value="{{ $single->selling_prize }}" readonly>
                                 </div>
                             </div><!-- col-4 -->

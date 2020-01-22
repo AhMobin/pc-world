@@ -81,15 +81,15 @@
                             </tr>
                             <tr>
                                 <th>Tax</th>
-                                <th>${{ Cart::tax() }}</th>
+                                <th>{{ Cart::tax() }}</th>
                             </tr>
                             <tr>
                                 <th>Shipping Charge</th>
-                                <th>$5</th>
+                                <th>-</th>
                             </tr>
                             <tr>
                                 <th>Total Payable</th>
-                                <th>${{ Cart::total()+5 }} <br><span style="font-weight: normal">BDT {{ round((Cart::total()+5)*85) }}</span></th>
+                                <th>{{ Cart::total() }} <br><span style="font-weight: normal"></span></th>
                             </tr>
                         </table>
                     </div>
@@ -117,9 +117,9 @@
                                     </div>
 
                                     <input type="hidden" class="form-control" name="subtotal_amount" value="{{ Cart::subtotal() }}">
-                                    <input type="hidden" class="form-control" name="shipping_charge" value="5">
+                                    <input type="hidden" class="form-control" name="shipping_charge" value="0">
                                     <input type="hidden" class="form-control" name="tax" value="{{ Cart::tax() }}">
-                                    <input type="hidden" class="form-control" name="total_amount" value="{{ round((Cart::total()+5)) }}">
+                                    <input type="hidden" class="form-control" name="total_amount" value="{{ Cart::total() }}">
                                     <input type="hidden" class="form-control" name="ship_name" value="{{ $data['name'] }}">
                                     <input type="hidden" class="form-control" name="ship_phone" value="{{ $data['phone_number'] }}">
                                     <input type="hidden" class="form-control" name="ship_email" value="{{ $data['email_address'] }}">

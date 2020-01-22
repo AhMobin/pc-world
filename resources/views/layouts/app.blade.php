@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -91,7 +90,10 @@
                     <div class="menumenu__container clearfix">
                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                             <div class="logo">
-                                <a href="{{ URL::to('/')}}"><img src="{{ asset('public/frontend/images/logo/pcw2.png') }}" alt="logo images"></a>
+                                @php
+                                    $logo = DB::table('logos')->where('status',1)->first();
+                                @endphp
+                                <a href="{{ URL::to('/')}}"><img src="{{ url($logo->branding_logo) }}" alt="logo images"></a>
                             </div>
                         </div>
                         <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
@@ -295,8 +297,7 @@
                             <h2 class="title__line--2">information</h2>
                             <div class="ft__inner">
                                 <ul class="ft__list">
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="{{ route('about') }}">About us</a></li>
                                     <li><a href="#">Privacy & Policy</a></li>
                                     <li><a href="#">Terms  & Condition</a></li>
                                     <li><a href="#">Manufactures</a></li>
@@ -309,7 +310,7 @@
                     <!-- Start Single Footer Widget -->
 
 
-                    <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
+                    {{-- <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
                         <div class="footer">
                             <h2 class="title__line--2">my account</h2>
                             <div class="ft__inner">
@@ -326,7 +327,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- End Single Footer Widget -->
                     <!-- Start Single Footer Widget -->
                     <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
@@ -362,7 +363,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="copyright__inner">
-                            <p>Copyright© <a href="#">Online PC World.</a>. All right reserved. <script>document.write(new Date().getFullYear());</script>.</p>
+                            <p>Copyright© <a href="{{ url('/') }}">Online PC World.</a>. All right reserved. <script>document.write(new Date().getFullYear());</script>.</p>
                         </div>
                     </div>
                 </div>
