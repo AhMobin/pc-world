@@ -12,22 +12,22 @@
             </div><!-- sl-page-title -->
 
             <div class="card pd-20 pd-sm-40">
-                <h6 class="card-body-title">New Product Add <a href="{{ route('all.product') }}" class="btn btn-success btn-sm pull-right">All Product</a></h6>
+                <h6 class="card-body-title">Support Page Settings <a href="#" class="btn btn-success btn-sm pull-right">Edit Settings</a></h6>
 
-                <form action="{{ route('store.product') }}" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-layout">
                         <div class="row mg-b-25">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Product Name: <span class="tx-danger">*</span></label>
-                                    <input class="form-control" type="text" name="product_name"  >
+                                    <label class="form-control-label">Header Title: <span class="tx-danger">*</span></label>
+                                    <input class="form-control" type="text" name="header_title">
                                 </div>
                             </div><!-- col-4 -->
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Product Slug: <span class="tx-danger">*</span></label>
-                                    <input class="form-control" type="text" name="product_slug" placeholder="product-name (lowercase and use hyphen)" >
+                                    <label class="form-control-label">Header Sub-Title: <span class="tx-danger">*</span></label>
+                                    <input class="form-control" type="text" name="header_subtitle">
                                 </div>
                             </div><!-- col-4 -->
                             <div class="col-lg-4">
@@ -137,53 +137,6 @@
                         </div><!-- row -->
 
                         <br><hr>
-{{--                        <div class="row">--}}
-{{--                            <div class="col-lg-4">--}}
-{{--                                <label class="ckbox">--}}
-{{--                                    <input type="checkbox" name="main_slider" value="1">--}}
-{{--                                    <span>Main Slider</span>--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-4">--}}
-{{--                                <label class="ckbox">--}}
-{{--                                    <input type="checkbox" name="hot_deal" value="1">--}}
-{{--                                    <span>Hot Deal</span>--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-4">--}}
-{{--                                <label class="ckbox">--}}
-{{--                                    <input type="checkbox" name="best_rated" value="1">--}}
-{{--                                    <span>Best Rated</span>--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-4">--}}
-{{--                                <label class="ckbox">--}}
-{{--                                    <input type="checkbox" name="trend" value="1">--}}
-{{--                                    <span>Trend Product</span>--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-4">--}}
-{{--                                <label class="ckbox">--}}
-{{--                                    <input type="checkbox" name="mid_slider" value="1">--}}
-{{--                                    <span>Mid Slider</span>--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-4">--}}
-{{--                                <label class="ckbox">--}}
-{{--                                    <input type="checkbox" name="hot_new" value="1">--}}
-{{--                                    <span>Hot New</span>--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-
-{{--                            <div class="col-lg-4">--}}
-{{--                                <label class="ckbox">--}}
-{{--                                    <input type="checkbox" name="buyone_getone" value="1">--}}
-{{--                                    <span>Buy One Get One</span>--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <br><br><hr>--}}
-
                         <div class="form-layout-footer">
                             <button class="btn btn-info mg-r-5" type="submit">Submit </button>
                         </div><!-- form-layout-footer -->

@@ -66,7 +66,12 @@
 </section>
         <!-- End Category Area -->
 
-        <!-- Featured Review Area -->
+@php
+    $review = DB::table('featured_reviews')->where('status',1)->get();
+@endphp
+
+
+<!-- Featured Review Area -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -76,12 +81,6 @@
         </div>
     </div>
 </div>
-
-@php
-    $review = DB::table('featured_reviews')->where('status',1)->get();
-@endphp
-
-
 <!-- Start Review Slider-->
 <div class="slider__container slider--one bg__cat--3">
     <div class="slide__container slider__activation__wrap owl-carousel">
@@ -109,52 +108,6 @@
         </section>
         <!-- End single Review -->
         @endforeach
-
-        <!-- Start single Review -->
-        <!-- <section class="single__slide htc__good__sale bg__cat--3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                        <div class="fr__prize__inner">
-                            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-                            <h3>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem consequuntur dicta eligendi reprehenderit similique"</h3>
-                            <a class="fr__btn" href="{{ route('build.desktop') }}">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                        <div class="prize__inner">
-                            <div class="prize__thumb">
-                                <img src="{{asset('public/frontend/images/reviews/review-2.png')}}" alt="banner images">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- End single Review -->
-
-        <!-- Start single Review -->
-        <!-- <section class="single__slide htc__good__sale bg__cat--3 review__slider">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                        <div class="fr__prize__inner">
-                            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-                            <h3>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem consequuntur dicta eligendi reprehenderit similique"</h3>
-                            <a class="fr__btn" href="{{ route('build.desktop') }}">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                        <div class="prize__inner">
-                            <div class="prize__thumb">
-                                <img src="{{asset('public/frontend/images/reviews/review-3.png')}}" alt="banner images">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- End single Review -->
     </div>
 </div>
 <!-- Start Review Slider-->
@@ -180,7 +133,8 @@
                         @foreach($recom as $row)
                         <!-- Start Single Category -->
                         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
- 
+                            <form action="{{ url('recom/cart/'.$row->id) }}" method="post">
+                                @csrf
                                 <div class="category cat_bg">
                                     <div class="ht__cat__thumb">
                                         <ul style="text-align: center">
@@ -189,6 +143,7 @@
                                             </li>
                                             <li style="padding: 10px; text-align: center">
                                                 <h5 style="color: #fff">{{ $row->recom_title }}</h5>
+                                                <input type="hidden" name="qty" value="1">
                                             </li>
                                             <hr>
 
@@ -208,77 +163,10 @@
                                         <button type="submit" class="fr__btn" style="border: none;">Add To Cart</a>
                                     </div>
                                 </div>
+                            </form>    
                         </div>
                         <!-- End Single Category -->
                         @endforeach
-
-                        <!-- Start Single Category -->
-                        <!-- <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
-                            <div class="category cat_bg">
-                                <div class="ht__cat__thumb">
-                                    <ul style="text-align: center">
-                                        <li style="text-align: center">
-                                            <img src="{{ asset('public/frontend/images/product/laptops.jpg')}}" alt="" height="100px" width="150px">
-                                        </li>
-                                        <li style="padding: 10px; text-align: center">
-                                            <h5 style="color: #fff">Lorem ipsum dolor sit amet.</h5>
-                                        </li>
-                                        <hr>
-
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                </div>
-                                <div class="fr__product__inner">
-                                    <ul>
-                                        <li><h3 class="recom__price">1013<sup>TK</sup></h3></li>
-                                    </ul>
-                                    <br>
-                                    <a class="fr__btn" href="{{ route('build.desktop') }}">Customize Now</a>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- End Single Category -->
-                        <!-- Start Single Category -->
-                <!--         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
-                            <div class="category cat_bg">
-                                <div class="ht__cat__thumb">
-                                    <ul style="text-align: center">
-                                        <li style="text-align: center">
-                                            <img src="{{ asset('public/frontend/images/product/workstation-desktops.jpg')}}" alt="" height="100px" width="150px">
-                                        </li>
-                                        <li style="padding: 10px; text-align: center">
-                                            <h5 style="color: #fff">Lorem ipsum dolor sit amet.</h5>
-                                        </li>
-                                        <hr>
-
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                        <li><i class="fa fa-check" style="color: #2b542c"></i> Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                </div>
-                                <div class="fr__product__inner">
-                                    <ul>
-                                        <li><h3 class="recom__price">1013<sup>TK</sup></h3></li>
-                                    </ul>
-                                    <br>
-                                    <a class="fr__btn" href="{{ route('build.desktop') }}">Customize Now</a>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- End Single Category -->
-
                     </div>
                 </div>
             </div>
@@ -292,23 +180,27 @@
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
                             <h2 class="title__line" style="color: #fff">Our Focus</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                         </div>
                     </div>
                 </div>
+                @php
+                    $focus = DB::table('focuses')->where('status',1)->limit(4)->get();
+                @endphp
                 <div class="row">
                     <div class="ht__blog__wrap clearfix">
+                        @foreach($focus as $row)
                         <!-- Start Single Blog -->
                         <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
                             <div class="blog">
                                 <div class="blog__thumb">
                                     <a href="#">
-                                        <img src="{{asset('public/frontend/images/focus/assembly.jpg')}}" alt="blog images">
+                                        <img src="{{ url($row->focus_image) }}" alt="blog images" height="170">
                                     </a>
                                 </div>
                                 <div class="blog__details">
-                                    <h2 style="color: #fff"><a href="#">Craftsmanship</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis culpa nam, provident quasi ratione voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, pariatur. </p>
+                                    <h2 style="color: #fff"><a href="#">{{ $row->focus_title }}</a></h2>
+                                    <p>{{ $row->focus_desc }}</p>
 {{--                                    <div class="blog__btn">--}}
 {{--                                        <a href="#">Read More</a>--}}
 {{--                                    </div>--}}
@@ -316,60 +208,8 @@
                             </div>
                         </div>
                         <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
-                            <div class="blog">
-                                <div class="blog__thumb">
-                                    <a href="#">
-                                        <img src="{{asset('public/frontend/images/focus/no-compromises-page.jpg')}}" alt="blog images">
-                                    </a>
-                                </div>
-                                <div class="blog__details">
-                                    <h2 style="color: #fff"><a href="#">Performance</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis culpa nam, provident quasi ratione voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, pariatur. </p>
-{{--                                    <div class="blog__btn">--}}
-{{--                                        <a href="#">Read More</a>--}}
-{{--                                    </div>--}}
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
-                            <div class="blog">
-                                <div class="blog__thumb">
-                                    <a href="#">
-                                        <img src="{{asset('public/frontend/images/focus/testing.jpg')}}" alt="blog images">
-                                    </a>
-                                </div>
-                                <div class="blog__details">
-                                    <h2 style="color: #fff"><a href="#">Testing</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis culpa nam, provident quasi ratione voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, pariatur. </p>
-{{--                                    <div class="blog__btn">--}}
-{{--                                        <a href="#">Read More</a>--}}
-{{--                                    </div>--}}
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
-                        <!-- Start Single Blog -->
-                        <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
-                            <div class="blog">
-                                <div class="blog__thumb">
-                                    <a href="#">
-                                        <img src="{{asset('public/frontend/images/focus/a-plus-support.jpg')}}" alt="blog images">
-                                    </a>
-                                </div>
-                                <div class="blog__details">
-                                    <h2 style="color: #fff"><a href="#">Support</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis culpa nam, provident quasi ratione voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, pariatur. </p>
-{{--                                    <div class="blog__btn">--}}
-{{--                                        <a href="#">Read More</a>--}}
-{{--                                    </div>--}}
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Blog -->
+                        @endforeach
+
                     </div>
                 </div>
             </div>

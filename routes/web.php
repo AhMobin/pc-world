@@ -212,6 +212,11 @@ Route::get('product/details/{product_slug}','ProductController@ProductView');
 Route::post('product/buy/{id}','ProductController@productAddedCart');
 //custom build product cart
 Route::post('custom/product/cart/{id}','ProductController@CustomBuildCart');
+
+//recommendation added to cart
+Route::post('recom/cart/{id}','ProductController@RecommnendationCart');
+
+
 //newsletters
 Route::post('users/subscribe','FrontController@StoreNewsletter')->name('store.newsletter');
 

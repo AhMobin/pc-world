@@ -78,6 +78,26 @@ class ProductController extends Controller
 //        return redirect()->back();
 //    }
 
+    public function RecommnendationCart(Request $request, $id){
+        $recom = DB::table('our_recommendations')->where('id', $id)->first();
+
+        $data = array();
+        $data['id'] = $id;
+        $data['name'] = $recom->recom_title;
+        $data['qty'] = $request->qty;
+        $data['price'] = $recom->price;
+        $data['weight'] = 1;
+        $data['options']['image'] = $recom->recom_image;
+
+        Cart::add($data);
+
+        $notification = array(
+            'messege' => 'Successfully Added To Cart.',
+            'alert-type' => 'success'
+        );
+        return redirect()->to('/')->with($notification);
+    }
+
 
     public function CustomBuildCart(Request $request, $id){
         $product = DB::table('products')->where('id', $id)->first();
@@ -146,5 +166,4 @@ class ProductController extends Controller
             return redirect()->back()->with($notification);
         }
     }
-
 }
