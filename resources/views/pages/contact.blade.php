@@ -68,21 +68,22 @@
                     </div>
                 </div>
                 <div class="col-xs-12">
-                    <form id="contact-form" action="#" method="post">
+                    <form id="contact-form" action="{{ route('get.customers.comment') }}" method="post">
+                        @csrf
                         <div class="single-contact-form">
                             <div class="contact-box name">
-                                <input type="text" name="name" placeholder="Your Name*">
-                                <input type="email" name="email" placeholder="Mail*">
+                                <input type="text" name="get_name" placeholder="Your Name*">
+                                <input type="email" name="get_email" placeholder="Mail*">
                             </div>
                         </div>
                         <div class="single-contact-form">
                             <div class="contact-box subject">
-                                <input type="text" name="subject" placeholder="Subject*">
+                                <input type="text" name="get_subject" placeholder="Subject*">
                             </div>
                         </div>
                         <div class="single-contact-form">
                             <div class="contact-box message">
-                                <textarea name="message" placeholder="Your Message"></textarea>
+                                <textarea name="get_message" placeholder="Your Message"></textarea>
                             </div>
                         </div>
                         <div class="contact-btn">

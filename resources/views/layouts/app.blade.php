@@ -202,8 +202,9 @@
                 <div class="row" >
                     <div class="col-md-12" >
                         <div class="search__inner">
-                            <form action="#" method="get">
-                                <input placeholder="Search here... " type="text">
+                            <form action="{{ route('product.search') }}" method="post">
+                                @csrf
+                                <input name="search" placeholder="Search here... " type="text">
                                 <button type="submit"></button>
                             </form>
                             <div class="search__close__btn">
@@ -394,7 +395,6 @@
 <!-- For toastr sweet alert message -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
-
 
 
 <script>

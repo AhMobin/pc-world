@@ -26,6 +26,10 @@ class PageController extends Controller
     }
 
     public function UserProfilePage(){
+        $id = Auth::user()->id;
+
+        
+
         return view('pages.user_profile');
     }
 
@@ -59,5 +63,29 @@ class PageController extends Controller
 
     public function NormalLaptop(){
         return view('pages.laptop.normal_laptop');
+    }
+
+    //get in touch
+    public function geInTouch(Request $request){
+      $validatedData = $request->validate([
+            'get_name' => 'required',
+            'get_email' => 'required|email',
+            'get_subject' => 'required',
+            'get_message' => 'required',
+        ]);
+
+        $data = array();
+        $data['get_name'] = $request->get_name;
+        $data['get_email'] = $request->get_email;
+        $data['get_subject'] = $request->get_subject;
+        $data['get_message'] = $request->get_message;
+
+        $comment = DB::table('customer_comments')->insert($data);
+
+        $notification=array(
+          'messege'=>'Thanks For Get In Touch',
+          'alert-type'=>'success'
+           );
+       return Redirect()->back()->with($notification);
     }
 }

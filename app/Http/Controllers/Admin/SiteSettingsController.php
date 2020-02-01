@@ -482,7 +482,7 @@ class SiteSettingsController extends Controller
             $imageURL = $uploadPath . $image_fullName;
             $success = $image->move($uploadPath, $image_fullName);
             $data['recom_image'] = $imageURL;
-            $updateWithImage = DB::table('our_recommendations')->update($data);
+            $updateWithImage = DB::table('our_recommendations')->where('id',$id)->update($data);
 
             $notification = array(
             'messege' => 'Recommendation Updated Successfull',
@@ -491,7 +491,7 @@ class SiteSettingsController extends Controller
             return Redirect()->route('our.recommendation')->with($notification);
 
         }else{
-            $updateWithOutImage = DB::table('our_recommendations')->update($data);
+            $updateWithOutImage = DB::table('our_recommendations')->where('id',$id)->update($data);
 
             $notification = array(
             'messege' => 'Recommendation Updated Successfull',

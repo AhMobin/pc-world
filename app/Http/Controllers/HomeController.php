@@ -78,7 +78,7 @@ class HomeController extends Controller
         $oldPhoto = $request->old_photo;
         $image = $request->file('user_photo');
 
-        if($image) {
+        if($image && $oldPhoto == true) {
             unlink($oldPhoto);
             $image_name = hexdec(uniqid());
             $ext = strtolower($image->getClientOriginalExtension());
@@ -87,15 +87,32 @@ class HomeController extends Controller
             $imageURL = $uploadPath . $image_fullName;
             $success = $image->move($uploadPath, $image_fullName);
             $data['user_photo'] = $imageURL;
-            $brand = DB::table('users')->where('id', $id)->update($data);
+            $user = DB::table('users')->where('id', $id)->update($data);
 
             $notification = array(
                 'messege' => 'Customer Profile Updated Successful',
                 'alert-type' => 'success'
             );
             return Redirect()->route('home')->with($notification);
-        }else{
-            $brand = DB::table('users')->where('id',$id)->update($data);
+
+        }elseif($image && $oldPhoto == false){
+            $image_name = hexdec(uniqid());
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_fullName = $image_name . '.' . $ext;
+            $uploadPath = 'public/frontend/images/users/';
+            $imageURL = $uploadPath . $image_fullName;
+            $success = $image->move($uploadPath, $image_fullName);
+            $data['user_photo'] = $imageURL;
+            $user = DB::table('users')->where('id', $id)->update($data);
+
+            $notification = array(
+                'messege' => 'Customer Profile Updated Successful',
+                'alert-type' => 'success'
+            );
+            return Redirect()->route('home')->with($notification);
+        }
+        else{
+            $user = DB::table('users')->where('id',$id)->update($data);
             $notification = array(
                 'messege' => 'Customer Profile Updated Successful',
                 'alert-type' => 'success'

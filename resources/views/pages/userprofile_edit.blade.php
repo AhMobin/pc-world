@@ -48,15 +48,21 @@
                                     <input type="text" class="form-control" name="email" value="{{ $customer->email }}">
                                 </div>
 
+                                @if($customer->user_photo != NULL)
                                 <div class="form-group">
                                     <label for="customerCurrentPhoto">Current Photo</label><br>
                                     <img src="{{ url($customer->user_photo) }}" alt="" height="100" width="120">
                                 </div>
+                                @else
+                                @endif
 
                                 <div class="form-group">
                                     <label for="customerNewPhoto">New Photo</label><br>
                                     <input type="file" class="form-control" name="user_photo">
+                                    @if($customer->user_photo != NULL)
                                     <input type="hidden" class="form-control" name="old_photo" value="{{ $customer->user_photo }}">
+                                    @else
+                                    @endif
                                 </div>
 
                                 <button type="submit" class="fr__btn upb">Update</button>

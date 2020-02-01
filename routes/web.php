@@ -101,6 +101,9 @@ Route::get('product/delivery/progress/{id}','Admin\OrderController@OrderInProgre
 Route::get('admin/delivery/done/{id}','Admin\OrderController@OrderDelivered');
 
 
+///customer get in touch/contact page message
+Route::post('get/in/touch/','PageController@geInTouch')->name('get.customers.comment');
+
 
 ///site settings
 /// *******
@@ -170,7 +173,6 @@ Route::get('user/profile','PageController@UserProfilePage')->name('user.account'
 Route::get('configure/custom/desktop','PageController@BuildDesktop')->name('build.desktop');
 Route::get('desktop','PageController@Desktop')->name('desktop');
 
-
 Route::get('gears/accessories','PageController@GearPage')->name('gears');
 Route::get('gaming/desktop','PageController@GamingDesktop')->name('gaming.desktop');
 Route::get('workstation','PageController@Workstation')->name('workstation.desktop');
@@ -220,11 +222,6 @@ Route::post('recom/cart/{id}','ProductController@RecommnendationCart');
 //newsletters
 Route::post('users/subscribe','FrontController@StoreNewsletter')->name('store.newsletter');
 
-
-//show filtered branded product
-
-
-
 //custom desktop configure
 Route::post('upload/design','ProductController@uploadDesign');
 
@@ -237,6 +234,8 @@ Route::post('payment/process','PaymentController@PaymentProcess')->name('payment
 //bkash payment
 Route::post('paying/bkash','PaymentController@bKashPayment')->name('paying.bkash');
 
+//product search
+Route::post('product/search', 'FrontController@ProductSearch')->name('product.search');
 
 //user profile edit
 Route::get('customer/profile/edit','PageController@userProfileEdit')->name('edit.user.profile');
