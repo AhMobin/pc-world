@@ -1,15 +1,12 @@
 @extends('layouts.app')
 
 @php
-    $id = Auth::id();
-    $details = DB::table('users')->where('id',$id)->first();
-
+    $details = DB::table('users')->where('id',Auth::id())->first();
     $order = DB::table('orders')
         ->join('order_details','orders.id','order_details.order_id')
-        ->select('orders.*','order_details.quantity','order_details.single_price')
-        ->where('orders.user_id',$id)->get();
+        ->select('order_details.*','orders.*')
+        ->where('orders.user_id',Auth::user()->id)->limit(8)->orderBy('orders.id','DESC')->get();
 @endphp
-
 <head>
     <title>PC World - User Profile</title>
     <style>
@@ -76,7 +73,7 @@
                                 @else
                                 @endif
                                 <div class="card-body">
-                                    <p class="card-title text-center user_name">{{ $details->name }}</p>
+                                    <p class="card-title text-center user_name">{{ Auth::user()->name }}</p>
                                 </div>
                                 <ul class="list-group">
                                     <li class="list-group-item"><a href="{{ route('edit.user.profile') }}"> Edit Profile </a></li>
@@ -91,43 +88,43 @@
 
                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 m-auto">
                         
-                        <div class="order_infos">
-                            <h2 style="color: #fff; margin: 20px auto ;">Customer Orders Information</h2>
-                        </div>
-                        <table class="table table-bordered text-center">
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Product Quantity</th>
-                                <th>Product Price</th>
-                                <th>Total Price</th>
-                                <th>Paying Amount</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                            @foreach($order as $row)
+                            <div class="order_infos">
+                                <h2 style="color: #fff; margin: 20px auto ;">Customer Orders Information</h2>
+                            </div>
+                            <table class="table table-bordered text-center">
                                 <tr>
-                                    <td>{{ $row->product_name }}</td>
-                                    <td>{{ $row->quantity }}</td>
-                                    <td>{{ $row->single_price }}</td>
-                                    <td>{{ $row->total_amount }}</td>
-                                    <td>{{ $row->paying_amount }}</td>
-                                    <td>{{ $row->date }}</td>
-                                    <td>
-                                        @if($row->status == 0)
-                                            <span class="badge badge-warning">pending</span>
-                                        @elseif($row->status == 1)
-                                            <span class="badge badge-info">Payment Accept</span>
-                                        @elseif($row->status == 2)
-                                            <span class="badge badge-secondary">Delivery In Processing</span>
-                                        @elseif($row->status == 3)
-                                            <span class="badge badge-success">Delivered</span>
-                                        @else
-                                            <span class="badge badge-danger">Canceled</span>
-                                        @endif
-                                    </td>
+                                    <th>Product Name</th>
+                                    <th>Product Quantity</th>
+                                    <th>Product Price</th>
+                                    <th>Total Price</th>
+                                    <th>Paying Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
                                 </tr>
-                            @endforeach
-                        </table>
+                                @foreach($order as $row)
+                                    <tr>
+                                        <td>{{ $row->product_name }}</td>
+                                        <td>{{ $row->quantity }}</td>
+                                        <td>{{ $row->single_price }}</td>
+                                        <td>{{ $row->total_amount }}</td>
+                                        <td>{{ $row->paying_amount }}</td>
+                                        <td>{{ $row->date }}</td>
+                                        <td>
+                                            @if($row->status == 0)
+                                                <span class="badge badge-warning">pending</span>
+                                            @elseif($row->status == 1)
+                                                <span class="badge badge-info">Payment Accept</span>
+                                            @elseif($row->status == 2)
+                                                <span class="badge badge-secondary">Delivery In Processing</span>
+                                            @elseif($row->status == 3)
+                                                <span class="badge badge-success">Delivered</span>
+                                            @else
+                                                <span class="badge badge-danger">Canceled</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
                     </div>
                 </div>
             </div>

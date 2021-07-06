@@ -83,7 +83,7 @@
                 <div class="col-xs-12">
                     <div class="bradcaump__inner">
                         <nav class="bradcaump-inner">
-                            <h2 style="color: #f2dede; text-align: left; font-weight: bold">Product Details: {{ $product -> product_name }}</h2>
+                            <h2 style="color: #f2dede; text-align: left; font-weight: bold">{{ $product -> product_name }}</h2>
                         </nav>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
                     <div class="ht__product__dtl">
-                        <h2>{{ $product->product_name }}</h2>
+                        <h2 style="font-family: 'Poppins', sans-serif;">{{ $product->product_name }}</h2>
                         <h6>Model: <span>{{ $product->product_model }}</span></h6>
                         <ul class="rating">
                             <li><i class="icon-star icons"></i></li>
@@ -149,7 +149,7 @@
                             <li class="old"><i class="icon-star icons"></i></li>
                         </ul>
                         <ul  class="pro__prize">
-                            <li class="old__prize">{{'BDT'. $product->selling_prize }}</li>
+                            <li class="old__prize">{{'BDT '. $product->selling_prize }}</li>
                             <li>
                             @php
                                 if($product->discount_prize != NULL){

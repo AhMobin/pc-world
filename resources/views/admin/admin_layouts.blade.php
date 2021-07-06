@@ -130,10 +130,8 @@
                     <li class="nav-item"><a href="#" class="nav-link">Bradcaumps Banner</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Homepage Category</a></li>
                     <li class="nav-item"><a href="{{ route('views.featured.reivews')}}" class="nav-link">Featured Review</a></li>
-                    <li class="nav-item"><a href="{{ route('our.recommendation') }}" class="nav-link">Our Recommendation</a></li>
+                    <li class="nav-item"><a href="{{ route('our.recommendation') }}" class="nav-link">Recommendation Featured</a></li>
                     <li class="nav-item"><a href="{{ route('our.focus.panel') }}" class="nav-link">Our Focus</a></li>
-                    <li class="nav-item"><a href="{{ route('support.page.settings') }}" class="nav-link">Support Page</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Contact Page</a></li>
                     <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li>
                 </ul>
 

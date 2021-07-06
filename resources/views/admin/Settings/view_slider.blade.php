@@ -26,6 +26,10 @@
                         </div>
                         <div class="form-group">
                             <label for="brandingLogo">Slider Button Link</label>
+                            <input type="text" class="form-control" value="{{ $slider->slider_btn}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="brandingLogo">Slider Button Link</label>
                             <input type="text" class="form-control" value="{{ $slider->slider_btn_link}}" readonly>
                         </div>
                         <div class="form-group">

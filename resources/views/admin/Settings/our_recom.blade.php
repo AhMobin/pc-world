@@ -93,38 +93,38 @@
                             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="title">Featured Title</label>
-                                    <input type="text" class="form-control" name="recom_title">
+                                    <input type="text" name="recom_title" class="form-control">
                                 </div>    
                                 <div class="form-group">
                                     <label for="cpu">CPU</label>
-                                    <input type="text" class="form-control" name="cpu">
+                                    <input type="text" name="cpu" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="motherboard">Motherboard</label>
-                                    <input type="text" class="form-control" name="motherboard">
+                                    <input type="text" name="motherboard" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="storage">Storage</label>
-                                    <input type="text" class="form-control" name="storage">
+                                    <input type="text" name="storage" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="ram">RAM</label>
-                                    <input type="text" class="form-control" name="ram">
+                                    <input type="text" name="ram" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="gpu">GPU</label>
-                                    <input type="text" class="form-control" name="gpu">
+                                    <input type="text" name="gpu" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="price">Price</label>
-                                    <input type="text" class="form-control" name="price">
+                                    <input type="text" name="price" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="image">Featured Image</label>
-                                    <input type="file" class="form-control" name="recom_image">
+                                    <input type="file" name="recom_image" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-danger">Add Now</button>

@@ -34,5 +34,4 @@ class FrontController extends Controller
             ->paginate(20);
         return view('pages.search',compact('products'));       
     }
-
 }

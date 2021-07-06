@@ -135,8 +135,8 @@
 
                                         <li><a href="#">{{'Laptop'}}</a>
                                             <ul>
-                                                <li><a href="#">{{'Normal Laptop'}}</a></li>
-                                                <li><a href="#">{{'Gaming Laptop'}}</a></li>
+                                                <li><a href="{{ route('normal.laptop') }}">{{'Normal Laptop'}}</a></li>
+                                                <li><a href="{{ route('gaming.laptop') }}">{{'Gaming Laptop'}}</a></li>
                                             </ul>
                                         </li>
 
@@ -238,7 +238,7 @@
                         <div class="shp__pro__details">
                             <h2 id="pname"></h2>
                             <span class="quantity">QTY: {{ $row->qty }}</span>
-                            <span class="shp__price">${{ $row->price }}</span>
+                            <span class="shp__price">BDT {{ $row->price }}</span>
                         </div>
                         <div class="remove__btn">
                             <a href="{{ url('remove/cart/'.$row->rowId)}}" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
@@ -248,7 +248,7 @@
                 </div>
                 <ul class="shoping__total">
                     <li class="subtotal">Subtotal:</li>
-                    <li class="total__price">$ {{ Cart::subtotal() }}</li>
+                    <li class="total__price">BDT {{ Cart::subtotal() }}</li>
                 </ul>
                 <ul class="shopping__btn">
                     <li><a href="{{ url('view/cart/') }}">View Cart</a></li>
@@ -274,7 +274,7 @@
                         <div class="footer">
                             <h2 class="title__line--2">ABOUT US</h2>
                             <div class="ft__details">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                                <p>We are a diverse group of individuals that are passionate about building the best custom PCs on the face of the earth.</p>
                                 <div class="ft__social__link">
                                     <ul class="social__link">
                                         <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
@@ -364,7 +364,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="copyright__inner">
-                            <p>Copyright© <a href="{{ url('/') }}">Online PC World.</a>. All right reserved. <script>document.write(new Date().getFullYear());</script>.</p>
+                            <p>Copyright© <a href="{{ url('/') }}">The Kite.</a>. All right reserved. <script>document.write(new Date().getFullYear());</script>.</p>
                         </div>
                     </div>
                 </div>
@@ -395,6 +395,7 @@
 <!-- For toastr sweet alert message -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+
 
 
 <script>

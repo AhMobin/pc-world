@@ -24,7 +24,7 @@
         $product = DB::table('products')
         ->join('brands','products.brand_id','brands.id')
         ->select('products.*','brands.brand_name')
-        ->where('category_id',1)->where('subcategory_id',22)->where('status',1)->orderBy('id','DESC')->get();
+        ->where('category_id',1)->where('subcategory_id',28)->where('status',1)->orderBy('id','DESC')->get();
     @endphp
 
     <!-- Start Bradcaump area -->

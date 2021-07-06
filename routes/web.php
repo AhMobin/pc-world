@@ -101,9 +101,6 @@ Route::get('product/delivery/progress/{id}','Admin\OrderController@OrderInProgre
 Route::get('admin/delivery/done/{id}','Admin\OrderController@OrderDelivered');
 
 
-///customer get in touch/contact page message
-Route::post('get/in/touch/','PageController@geInTouch')->name('get.customers.comment');
-
 
 ///site settings
 /// *******
@@ -129,9 +126,9 @@ Route::get('slider/deactivate/{id}','Admin\SiteSettingsController@DeactivateSlid
 //our focus
 Route::get('admin/our/focus','Admin\SiteSettingsController@OurFocus')->name('our.focus.panel');
 Route::post('store/our/focus','Admin\SiteSettingsController@OurFocusStore')->name('store.focus');
-Route::get('focus/view/{id}','Admin\SiteSettingsController@ViewFocus');
 Route::get('focus/edit/{id}','Admin\SiteSettingsController@EditFocus');
 Route::post('update/focus/{id}','Admin\SiteSettingsController@UpdateFocus');
+Route::get('focus/view/{id}','Admin\SiteSettingsController@ViewFocus');
 Route::get('focus/active/{id}','Admin\SiteSettingsController@ActivateFocus');
 Route::get('focus/deactive/{id}','Admin\SiteSettingsController@DeactivateFocus');
 Route::get('focus/delete/{id}','Admin\SiteSettingsController@DeleteFocus');
@@ -159,7 +156,6 @@ Route::get('recommendation/activate/{id}','Admin\SiteSettingsController@Activate
 Route::get('recommendation/deactivate/{id}','Admin\SiteSettingsController@DeactivateRecommendation');
 
 
-
 //**********************************************************
 //Frontend section routes =================================
 //*****************************************************
@@ -172,6 +168,7 @@ Route::get('about/us','PageController@AboutPage')->name('about');
 Route::get('user/profile','PageController@UserProfilePage')->name('user.account');
 Route::get('configure/custom/desktop','PageController@BuildDesktop')->name('build.desktop');
 Route::get('desktop','PageController@Desktop')->name('desktop');
+
 
 Route::get('gears/accessories','PageController@GearPage')->name('gears');
 Route::get('gaming/desktop','PageController@GamingDesktop')->name('gaming.desktop');
@@ -214,13 +211,17 @@ Route::get('product/details/{product_slug}','ProductController@ProductView');
 Route::post('product/buy/{id}','ProductController@productAddedCart');
 //custom build product cart
 Route::post('custom/product/cart/{id}','ProductController@CustomBuildCart');
-
 //recommendation added to cart
 Route::post('recom/cart/{id}','ProductController@RecommnendationCart');
-
-
 //newsletters
 Route::post('users/subscribe','FrontController@StoreNewsletter')->name('store.newsletter');
+///customer get in touch/contact page message
+Route::post('get/in/touch/','PageController@geInTouch')->name('get.customers.comment');
+
+
+//product search
+Route::post('product/search', 'FrontController@ProductSearch')->name('product.search');
+
 
 //custom desktop configure
 Route::post('upload/design','ProductController@uploadDesign');
@@ -234,8 +235,6 @@ Route::post('payment/process','PaymentController@PaymentProcess')->name('payment
 //bkash payment
 Route::post('paying/bkash','PaymentController@bKashPayment')->name('paying.bkash');
 
-//product search
-Route::post('product/search', 'FrontController@ProductSearch')->name('product.search');
 
 //user profile edit
 Route::get('customer/profile/edit','PageController@userProfileEdit')->name('edit.user.profile');

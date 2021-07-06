@@ -16,7 +16,7 @@ class ProductController extends Controller
                     ->join('brands','products.brand_id','brands.id')
                     ->join('categories','products.category_id','categories.id')
                     ->select('products.*','categories.category_name','brands.brand_name')
-                    ->where('product_slug',$product_slug)
+                    ->where('products.product_slug',$product_slug)
                     ->first();
 
         $pr_color = $product -> product_color;
@@ -78,25 +78,25 @@ class ProductController extends Controller
 //        return redirect()->back();
 //    }
 
-    public function RecommnendationCart(Request $request, $id){
-        $recom = DB::table('our_recommendations')->where('id', $id)->first();
+public function RecommnendationCart(Request $request, $id){
+    $recom = DB::table('our_recommendations')->where('id', $id)->first();
 
-        $data = array();
-        $data['id'] = $id;
-        $data['name'] = $recom->recom_title;
-        $data['qty'] = $request->qty;
-        $data['price'] = $recom->price;
-        $data['weight'] = 1;
-        $data['options']['image'] = $recom->recom_image;
+    $data = array();
+    $data['id'] = $id;
+    $data['name'] = $recom->recom_title;
+    $data['qty'] = $request->qty;
+    $data['price'] = $recom->price;
+    $data['weight'] = 1;
+    $data['options']['image'] = $recom->recom_image;
 
-        Cart::add($data);
+    Cart::add($data);
 
-        $notification = array(
-            'messege' => 'Successfully Added To Cart.',
-            'alert-type' => 'success'
-        );
-        return redirect()->to('/')->with($notification);
-    }
+    $notification = array(
+        'messege' => 'Successfully Added To Cart.',
+        'alert-type' => 'success'
+    );
+    return redirect()->to('/')->with($notification);
+}
 
 
     public function CustomBuildCart(Request $request, $id){
@@ -166,4 +166,5 @@ class ProductController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
 }

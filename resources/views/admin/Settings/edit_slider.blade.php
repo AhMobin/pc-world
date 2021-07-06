@@ -28,6 +28,10 @@
                             <textarea class="form-control" name="slider_description">{{ $slider->slider_description }}</textarea>
                         </div>
                         <div class="form-group">
+                            <label for="brandingLogo">Slider Button</label>
+                            <input type="text" class="form-control" name="slider_btn" value="{{ $slider->slider_btn}}">
+                        </div>
+                        <div class="form-group">
                             <label for="brandingLogo">Slider Button Link</label>
                             <input type="text" class="form-control" name="slider_btn_link" value="{{ $slider->slider_btn_link}}">
                         </div>

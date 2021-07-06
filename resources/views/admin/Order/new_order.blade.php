@@ -33,10 +33,10 @@
                             <tr>
                                 <td>{{ $row->payment_type }}</td>
                                 <td>{{ $row->tranx_id }}</td>
-                                <td>$ {{ $row->subtotal_amount }}</td>
-                                <td>$ {{ $row->shipping_charge }}</td>
-                                <td>$ {{ $row->tax }}</td>
-                                <td>$ {{ $row->total_amount }} <br>BDT {{ $row->total_amount*85 }} </td>
+                                <td>{{ $row->subtotal_amount }}</td>
+                                <td>{{ $row->shipping_charge }}</td>
+                                <td>{{ $row->tax }}</td>
+                                <td>{{ $row->total_amount }}</td>
                                 <td>{{ $row->paying_amount }}</td>
                                 <td>{{ $row->date }}</td>
                                 <td>

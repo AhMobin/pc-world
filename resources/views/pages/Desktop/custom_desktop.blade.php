@@ -767,7 +767,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-10 col-lg-10 col-sm-10 col-xs-12 build_pr">
                         <div class="click" data-toggle="collapse" href="#addoncards" role="button" aria-expanded="false" aria-controls="collapseExample">
                             <div class="image">
@@ -776,7 +776,6 @@
                             <div class="content">
                                 <span class="click_title">add-on cards</span>
                             </div>
-
                         </div>
 
                         <div class="collapse" id="addoncards">
@@ -814,8 +813,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+                </div> -->
+                <!-- <div class="row">
                     <div class="col-md-10 col-lg-10 col-sm-10 col-xs-12 build_pr">
                         <div class="click" data-toggle="collapse" href="#baydevice" role="button" aria-expanded="false" aria-controls="collapseExample">
                             <div class="image">
@@ -861,7 +860,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-md-10 col-lg-10 col-sm-10 col-xs-12 build_pr">
                         <div class="click" data-toggle="collapse" href="#display" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -896,7 +895,7 @@
 
                                         <div class="fr__product__inner" style="margin: 0; padding: 0;">
                                             <ul>
-                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $selling_prize }}<sup>Tk</sup></h3></li>
+                                                <li><strong style="color: #fff">Price: </strong><h3 class="recom__price" style="color: maroon">{{ $dis->selling_prize }}<sup>Tk</sup></h3></li>
                                             </ul>
                                             <br>
                                             <button class="fr__btn addCart" data-id="">ADD TO CART</button>

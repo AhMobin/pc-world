@@ -58,11 +58,11 @@
                 <!-- End Single Category -->
                     @endforeach
                 </div>
-                <div class="shop_page_nav d-flex flex-row">
+                <!-- <div class="shop_page_nav d-flex flex-row">
                     <div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>
                      {{   $products->links() }}
                     <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
-                </div>
+                </div> -->
 
             </div>
         </div>

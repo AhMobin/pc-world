@@ -36,7 +36,7 @@
                                     </tr>
                                     <tr>
                                         <th>Total :</th>
-                                        <th>{{ $order->total_amount }} $ <br> BDT {{ $order->total_amount*85 }}</th>
+                                        <th>{{ $order->total_amount }}</th>
                                     </tr>
                                     <tr>
                                         <th>Month : </th>
@@ -135,11 +135,11 @@
                                         <td>{{ $row->size }}</td>
                                         <td>{{ $row->quantity }}</td>
                                         <td>
-                                            {{ $row->single_price }} $
+                                            {{ $row->single_price }}
 
                                         </td>
                                         <td>
-                                            {{ $row->total_price }} $
+                                            {{ $row->total_price }}
 
                                         </td>
 

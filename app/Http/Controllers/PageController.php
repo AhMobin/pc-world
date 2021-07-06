@@ -10,6 +10,7 @@ use Auth;
 class PageController extends Controller
 {
     public function IndexPage(){
+        
         return view('pages.index');
     }
 
@@ -26,10 +27,6 @@ class PageController extends Controller
     }
 
     public function UserProfilePage(){
-        $id = Auth::user()->id;
-
-        
-
         return view('pages.user_profile');
     }
 
@@ -40,13 +37,37 @@ class PageController extends Controller
 
 
     public function GearPage(){
-        $headphone = DB::table('products')
+        $brands = DB::table('brands')->get();
+
+        $keyboards = DB::table('products')
+        ->join('brands','products.brand_id','brands.id')
+        ->select('products.*','brands.brand_name')
+        ->where('category_id',3)->where('subcategory_id',22)->where('status',1)->orderBy('id','DESC')->get();
+        $mouse = DB::table('products')
+        ->join('brands','products.brand_id','brands.id')
+        ->select('products.*','brands.brand_name')
+        ->where('category_id',3)->where('subcategory_id',23)->where('status',1)->orderBy('id','DESC')->get();
+        $headphones = DB::table('products')
         ->join('brands','products.brand_id','brands.id')
         ->select('products.*','brands.brand_name')
         ->where('category_id',3)->where('subcategory_id',5)->where('status',1)->orderBy('id','DESC')->get();
-
-        $gears = DB::table('subcategories')->where('category_id',3)->get();
-        return view('pages.gear.gear', compact('gears','headphone'));
+        $earphones = DB::table('products')
+        ->join('brands','products.brand_id','brands.id')
+        ->select('products.*','brands.brand_name')
+        ->where('category_id',3)->where('subcategory_id',25)->where('status',1)->orderBy('id','DESC')->get();
+        $speakers = DB::table('products')
+        ->join('brands','products.brand_id','brands.id')
+        ->select('products.*','brands.brand_name')
+        ->where('category_id',3)->where('subcategory_id',24)->where('status',1)->orderBy('id','DESC')->get();
+        $webcams = DB::table('products')
+        ->join('brands','products.brand_id','brands.id')
+        ->select('products.*','brands.brand_name')
+        ->where('category_id',3)->where('subcategory_id',26)->where('status',1)->orderBy('id','DESC')->get();
+        $cable_pads = DB::table('products')
+        ->join('brands','products.brand_id','brands.id')
+        ->select('products.*','brands.brand_name')
+        ->where('category_id',3)->where('subcategory_id',27)->where('status',1)->orderBy('id','DESC')->get();
+        return view('pages.gear.gear', compact('brands','keyboards','mouse','headphones','earphones','speakers','webcams','cable_pads'));
     }
 
     public function Workstation(){
@@ -67,25 +88,25 @@ class PageController extends Controller
 
     //get in touch
     public function geInTouch(Request $request){
-      $validatedData = $request->validate([
-            'get_name' => 'required',
-            'get_email' => 'required|email',
-            'get_subject' => 'required',
-            'get_message' => 'required',
-        ]);
-
-        $data = array();
-        $data['get_name'] = $request->get_name;
-        $data['get_email'] = $request->get_email;
-        $data['get_subject'] = $request->get_subject;
-        $data['get_message'] = $request->get_message;
-
-        $comment = DB::table('customer_comments')->insert($data);
-
-        $notification=array(
-          'messege'=>'Thanks For Get In Touch',
-          'alert-type'=>'success'
-           );
-       return Redirect()->back()->with($notification);
-    }
+        $validatedData = $request->validate([
+              'get_name' => 'required',
+              'get_email' => 'required|email',
+              'get_subject' => 'required',
+              'get_message' => 'required',
+          ]);
+  
+          $data = array();
+          $data['get_name'] = $request->get_name;
+          $data['get_email'] = $request->get_email;
+          $data['get_subject'] = $request->get_subject;
+          $data['get_message'] = $request->get_message;
+  
+          $comment = DB::table('customer_comments')->insert($data);
+  
+          $notification=array(
+            'messege'=>'Thanks For Get In Touch',
+            'alert-type'=>'success'
+             );
+         return Redirect()->back()->with($notification);
+      }
 }

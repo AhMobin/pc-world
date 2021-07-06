@@ -91,7 +91,7 @@ class SiteSettingsController extends Controller
         $brand = DB::table('sliders')->insert($data);
 
         $notification = array(
-            'messege' => 'Slider Added Successful',
+            'messege' => 'Slider Updated Successful',
             'alert-type' => 'success'
         );
         return Redirect()->route('view.sliders')->with($notification);
@@ -178,8 +178,6 @@ class SiteSettingsController extends Controller
         return Redirect()->back()->with($notification);
     }
 
-
-
     public function OurFocus(){
         $focus = DB::table('focuses')->get();
         return view('admin.settings.our_focus', compact('focus'));
@@ -211,7 +209,6 @@ class SiteSettingsController extends Controller
         );
         return Redirect()->back()->with($notification);
     }
-
 
     public function ViewFocus($id){
         $viewfocus = DB::table('focuses')->where('id',$id)->first();
@@ -262,7 +259,6 @@ class SiteSettingsController extends Controller
         $data = array();
         $data['focus_title'] = $request->focus_title;
         $data['focus_desc'] = $request->focus_desc;
-
         $image = $request->file('focus_image');
         if($image) {
             unlink($oldfocus);
@@ -290,10 +286,8 @@ class SiteSettingsController extends Controller
             return Redirect()->route('our.focus.panel')->with($notification);
         }
     }
-
-
-
-
+	
+	
     public function ViewFeatures(){
         $reviews = DB::table('featured_reviews')->get();
         return view('admin.settings.featured',compact('reviews'));

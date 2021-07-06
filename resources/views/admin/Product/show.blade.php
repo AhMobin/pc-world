@@ -33,7 +33,7 @@
                         @foreach($product as $row)
                             <tr>
                                 <td>{{ $row->id }}</td>
-                                <td style="width: 10%">{{ $row->product_name }}</td>
+                                <td style="width: 10%">{{ substr($row->product_name,0,10) }}</td>
                                 <td>{{ $row->product_code }}</td>
                                 <td class="text-center">
                                     <img src="{{ URL::to($row->product_image_one) }}" alt="" height="50" width="60">
